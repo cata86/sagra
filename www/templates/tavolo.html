@@ -1,11 +1,32 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>{{tavolo.descrizione}}</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-view class="itemView" ng-style="{ 'background-color': item.color }">
-    <ion-content class="center-content animated slideInUp">
-        {{tavolo.descrizione}}
-</ion-content>
+    <ion-nav-title>
+      {{tavolo.descrizione}}
+    </ion-nav-title>
+    <ion-content>
+        <div class="item row">
+            <span align="center" class="col col-50">
+                <span>Storico Sequenze</span>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </span>
+            <span align="center" class="col col-50">
+                <span>Totale</span>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </span>
+        </div>
+
+        <div>
+
+        <div>
+
+    </ion-content>
 </ion-view>

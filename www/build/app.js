@@ -129,6 +129,19 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
                 }
             }
         })
+		.state('app.sequenza', {
+            url: "/sequenza",
+			params: {
+                idSequenza: null
+            },
+            cache: false,
+            views: {
+                viewContent: {
+                    templateUrl: "templates/sequenza.html",
+                    controller: 'SequenzaController'
+                }
+            }
+        })
 		.state('app.cucina', {
             url: "/cucina",
             params: {
@@ -473,6 +486,25 @@ angular.module('App')
 
 		$scope.tavolo = Tavoli.get($stateParams.idTavolo);
 		console.log($scope.tavolo);
+
+		$scope.editSequenza = function(idSequenza){
+			$state.go('app.sequenza', { idSequenza: idSequenza});
+		}
+
+    }
+})();
+(function() {
+'use strict';
+
+    angular
+        .module('App')
+        .controller('SequenzaController', SequenzaController);
+
+    SequenzaController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
+    function SequenzaController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
+        
+
+		console.log($stateParams.idSequenza);
 
     }
 })();

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
 
-.run(['$ionicPlatform', 
+.run(['$ionicPlatform',
 			'$sqliteService',
       function($ionicPlatform, $sqliteService) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-		
+
     //Load the Pre-populated database, debug = true
     $sqliteService.preloadDataBase(true);
   });
@@ -35,9 +35,9 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
 
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content|ms-appx|x-wmapp0):|data:image\/|img\//);
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
-    
+
     $ionicConfigProvider.scrolling.jsScrolling(ionic.Platform.isIOS());
-    
+
     $stateProvider
         .state('home', {
             url: "/home",
@@ -143,7 +143,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
                 }
             }
         });
-        
+
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var $state = $injector.get("$state");
         $state.go("home");
@@ -225,31 +225,31 @@ window.queries = [
 
     AppController.$inject = ['$scope', '$ionicPopover'];
     function AppController($scope, $ionicPopover) {
-        
+
         $scope.items = [
             {
                 color: "#E47500",
-                icon: "ion-ionic",
+                icon: "ion-android-people",
                 title: "Accompagnatore",
-				view: "accompagnatore"
+				        view: "accompagnatore"
             },
             {
                 color: "#5AD863",
-                icon: "ion-social-html5",
+                icon: "ion-ios-compose",
                 title: "Ordini",
-				view: "ordini"
+				        view: "ordini"
             },
             {
                 color: "#F8E548",
-                icon: "ion-social-javascript",
+                icon: "ion-cash",
                 title: "Cassa",
-				view: "cassa"
+				        view: "cassa"
             },
             {
                 color: "#AD5CE9",
-                icon: "ion-social-sass",
+                icon: "ion-android-restaurant",
                 title: "Cucina",
-				view: "cucina"
+				        view: "cucina"
             }
         ];
 
@@ -266,7 +266,7 @@ window.queries = [
         $scope.openPopover = function ($event) {
             $scope.popover.show($event);
         };
-        
+
         $scope.$on('$destroy', function() {
             $scope.popover.remove();
         });
@@ -281,7 +281,7 @@ window.queries = [
 
     GalleryController.$inject = ['$scope', '$state'];
     function GalleryController($scope, $state) {
-        
+
         $scope.openItem = function(item){
             $state.go('app.'+item.view, { title: item.title, icon: item.icon, color: item.color });
         };
@@ -306,19 +306,19 @@ window.queries = [
      		cssClass: 'animated bounceInDown'
 			});
 		};
-		
+
 		$scope.showUsers = function () {
 			Model.Users.getAll().then(function (users) {
 				$scope.users = angular.copy(users);
 			});
 			Modals.openModal($scope, 'templates/modals/users.html', 'animated rotateInDownLeft');
 		};
-		
+
 		$scope.closeModal = function () {
 			Modals.closeModal();
 			$scope.users = [];
 		};
-		
+
 		//Center content
 		//1. http://codepen.io/mhartington/pen/gcHeL
 		//2. http://codepen.io/anon/pen/meQJvp
@@ -399,7 +399,7 @@ angular.module('App')
 
     AccompagnatoreController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
     function AccompagnatoreController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-        
+
         $scope.item = {
             title: $stateParams.title,
             icon: $stateParams.icon,
@@ -407,7 +407,7 @@ angular.module('App')
         };
 
 		$scope.tavoli = Tavoli.all();
-        
+
         if (!$scope.item.color) {
             $ionicViewSwitcher.nextDirection('back');
             $ionicHistory.nextViewOptions({
@@ -428,7 +428,7 @@ angular.module('App')
 
     OrdiniController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
     function OrdiniController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-        
+
         $scope.item = {
             title: $stateParams.title,
             icon: $stateParams.icon,
@@ -448,7 +448,7 @@ angular.module('App')
 		$scope.viewTable = function(table){
 			$state.go('app.tavolo', { idTavolo: table.id});
 		}
-        
+
         if (!$scope.item.color) {
             $ionicViewSwitcher.nextDirection('back');
             $ionicHistory.nextViewOptions({
@@ -469,7 +469,7 @@ angular.module('App')
 
     TavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
     function TavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-        
+
 
 		$scope.tavolo = Tavoli.get($stateParams.idTavolo);
 		console.log($scope.tavolo);
@@ -485,13 +485,13 @@ angular.module('App')
 
     ItemController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory'];
     function ItemController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory) {
-        
+
         $scope.item = {
             title: $stateParams.title,
             icon: $stateParams.icon,
             color: $stateParams.color
         };
-        
+
         if (!$scope.item.color) {
             $ionicViewSwitcher.nextDirection('back');
             $ionicHistory.nextViewOptions({

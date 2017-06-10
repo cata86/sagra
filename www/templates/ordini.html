@@ -1,22 +1,18 @@
-<ion-view class="itemView" view-title="{{item.title}}" ng-style="{ 'background-color': item.color }">
-    <ion-content  overflow-scroll="true">
-        ORDINI
+<ion-view class="itemView" view-title="{{item.title}} - Selezione tavolo" >
+    <ion-content overflow-scroll="true">
         <div class="button-bar">
-            <a class="button button-energized" ng-click="setInAttesa()" >In Attesa</a>
-            <a class="button button-outline" ng-click="setTutti()" >Tutti</a>
+            <a class="{{btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setInAttesa()" >In Attesa</a>
+            <a class="{{!btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
         </div>
-
-
-            <ion-list can-swipe="true">
-                <ion-item ng-repeat="tavolo in tavoli" class="animate-item">
-                    <div class="item-text-center item-text-wrap">
-                        {{tavolo.descrizione}}
-                        <button class="button button-positive" ng-click="viewTable(tavolo)">
-                            Vedi
-                        </button>
-                    </div>
-                </ion-item>
-            </ion-list>
-
-</ion-content>
+        <ion-list can-swipe="true">
+            <ion-item ng-repeat="tavolo in tavoli" class="animate-item">
+                <div class="item item-button-right">
+                    {{tavolo.descrizione}}
+                    <button class="button button-positive" ng-click="viewTable(tavolo)">
+                        Vedi
+                    </button>
+                </div>
+            </ion-item>
+        </ion-list>
+  </ion-content>
 </ion-view>

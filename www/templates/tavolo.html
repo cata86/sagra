@@ -1,7 +1,4 @@
-<ion-view class="itemView" ng-style="{ 'background-color': item.color }">
-    <ion-nav-title>
-      {{tavolo.descrizione}}
-    </ion-nav-title>
+<ion-view class="itemView" view-title="{{tavolo.descrizione}}" >
     <ion-content>
         <div class="item row">
             <span align="center" class="col col-50">
@@ -24,7 +21,7 @@
             </span>
         </div>
 
-        <div class="item item-divider"> 
+        <div class="item item-divider">
           <i class="icon ion-android-delete" style="font-size:2em"></i> Sequenza 1
           <button class="button button-energized" ng-click="editSequenza(1)">
                 Aggiungi pietanze
@@ -47,13 +44,13 @@
                 <span class="badge badge-assertive">2</span>
             </a>
         </div>
-        <div class="item item-divider"> 
+        <div class="item item-divider">
             <button class="button button-positive">
                 Aggiungi sequenza
             </button>
         </div>
 
-        <div class="row"> 
+        <div class="row">
             <span align="right" class="col col-100">
                 <span>Totale: 0€</span>
             </span>

@@ -106,7 +106,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
             url: "/ordini",
             params: {
                 color: null,
-                icon: null
+                icon: null,
+                title: null
             },
             cache: false,
             views: {
@@ -408,101 +409,11 @@ angular.module('App')
 
     angular
         .module('App')
-        .controller('AccompagnatoreController', AccompagnatoreController);
-
-    AccompagnatoreController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
-    function AccompagnatoreController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-
-        $scope.item = {
-            title: $stateParams.title,
-            icon: $stateParams.icon,
-            color: $stateParams.color
-        };
-
-		$scope.tavoli = Tavoli.all();
-
-        if (!$scope.item.color) {
-            $ionicViewSwitcher.nextDirection('back');
-            $ionicHistory.nextViewOptions({
-                disableBack: true,
-                disableAnimate : true,
-                historyRoot  : true
-            });
-            $state.go('app.gallery');
-        }
-    }
-})();
-(function() {
-'use strict';
-
-    angular
-        .module('App')
-        .controller('OrdiniController', OrdiniController);
-
-    OrdiniController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
-    function OrdiniController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-
-        $scope.item = {
-            title: $stateParams.title,
-            icon: $stateParams.icon,
-            color: $stateParams.color
-        };
-
-		$scope.tavoli = Tavoli.inAttesa();
-
-		$scope.setInAttesa = function(){
-			$scope.tavoli = Tavoli.inAttesa();
-		}
-
-		$scope.setTutti = function(){
-			$scope.tavoli = Tavoli.all();
-		}
-
-		$scope.viewTable = function(table){
-			$state.go('app.tavolo', { idTavolo: table.id});
-		}
-
-        if (!$scope.item.color) {
-            $ionicViewSwitcher.nextDirection('back');
-            $ionicHistory.nextViewOptions({
-                disableBack: true,
-                disableAnimate : true,
-                historyRoot  : true
-            });
-            $state.go('app.gallery');
-        }
-    }
-})();
-(function() {
-'use strict';
-
-    angular
-        .module('App')
-        .controller('TavoloController', TavoloController);
-
-    TavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
-    function TavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-
-
-		$scope.tavolo = Tavoli.get($stateParams.idTavolo);
-		console.log($scope.tavolo);
-
-		$scope.editSequenza = function(idSequenza){
-			$state.go('app.sequenza', { idSequenza: idSequenza});
-		}
-
-    }
-})();
-(function() {
-'use strict';
-
-    angular
-        .module('App')
         .controller('SequenzaController', SequenzaController);
 
     SequenzaController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
     function SequenzaController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
-        
+
 
 		console.log($stateParams.idSequenza);
 

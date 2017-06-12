@@ -5,134 +5,127 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
 
-.run(['$ionicPlatform',
-			'$sqliteService',
-      function($ionicPlatform, $sqliteService) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+.run(['$ionicPlatform', '$sqliteService',
+  function($ionicPlatform, $sqliteService) {
+    $ionicPlatform.ready(function() {
+      if(window.cordova && window.cordova.plugins.Keyboard) {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-
-    //Load the Pre-populated database, debug = true
-    $sqliteService.preloadDataBase(true);
-  });
-}])
-.config(['$stateProvider',
-         '$urlRouterProvider',
-         '$ionicConfigProvider',
-         '$compileProvider',
-         function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
-
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content|ms-appx|x-wmapp0):|data:image\/|img\//);
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
-
-    $ionicConfigProvider.scrolling.jsScrolling(ionic.Platform.isIOS());
-
-    $stateProvider
+        // Don't remove this line unless you know what you are doing. It stops the viewport
+        // from snapping when text inputs are focused. Ionic handles this internally for
+        // a much nicer keyboard experience.
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+      if(window.StatusBar) {
+        StatusBar.styleDefault();
+      }
+      //Load the Pre-populated database, debug = true
+      $sqliteService.preloadDataBase(true);
+    });
+  }])
+  .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', '$compileProvider',
+    function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
+      $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob|content|ms-appx|x-wmapp0):|data:image\/|img\//);
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
+      $ionicConfigProvider.scrolling.jsScrolling(ionic.Platform.isIOS());
+      $ionicConfigProvider.backButton.previousTitleText(false).text('');
+      $stateProvider
         .state('home', {
-            url: "/home",
-            templateUrl: "templates/home.html",
-            controller: 'HomeController'
+          url: "/home",
+          templateUrl: "templates/home.html",
+          controller: 'HomeController'
         })
         .state('app', {
-            url: '/app',
-            abstract: true,
-            controller: 'AppController',
-            templateUrl: 'templates/menu.html'
+          url: '/app',
+          abstract: true,
+          controller: 'AppController',
+          templateUrl: 'templates/menu.html'
         })
         .state('app.gallery', {
-            url: "/gallery",
-            cache: false,
-            views: {
-                viewContent: {
-                    templateUrl: "templates/gallery.html",
-                    controller: 'GalleryController'
-                }
+          url: "/gallery",
+          cache: false,
+          views: {
+            viewContent: {
+              templateUrl: "templates/gallery.html",
+              controller: 'GalleryController'
             }
+          }
         })
         .state('app.item', {
-            url: "/item/{title}",
-            params: {
-                color: null,
-                icon: null
-            },
-            cache: false,
-            views: {
-                viewContent: {
-                    templateUrl: "templates/item.html",
-                    controller: 'ItemController'
-                }
+          url: "/item/{title}",
+          params: {
+              color: null,
+              icon: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/item.html",
+                  controller: 'ItemController'
+              }
+          }
+        })
+		    .state('app.accompagnatore', {
+          url: "/accompagnatore",
+          params: {
+              color: null,
+              icon: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/accompagnatore.html",
+                  controller: 'AccompagnatoreController'
+              }
+          }
+        })
+		    .state('app.cassa', {
+          url: "/cassa",
+          params: {
+              color: null,
+              icon: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/cassa.html",
+                  controller: 'ItemController'
+              }
+          }
+        })
+	  	 .state('app.ordini', {
+          url: "/ordini",
+          params: {
+              color: null,
+              icon: null,
+              title: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/ordini.html",
+                  controller: 'OrdiniController'
+              }
             }
         })
-		.state('app.accompagnatore', {
-            url: "/accompagnatore",
-            params: {
-                color: null,
-                icon: null
-            },
-            cache: false,
-            views: {
-                viewContent: {
-                    templateUrl: "templates/accompagnatore.html",
-                    controller: 'AccompagnatoreController'
-                }
-            }
-        })
-		.state('app.cassa', {
-            url: "/cassa",
-            params: {
-                color: null,
-                icon: null
-            },
-            cache: false,
-            views: {
-                viewContent: {
-                    templateUrl: "templates/cassa.html",
-                    controller: 'ItemController'
-                }
-            }
-        })
-		.state('app.ordini', {
-            url: "/ordini",
-            params: {
-                color: null,
-                icon: null,
-                title: null
-            },
-            cache: false,
-            views: {
-                viewContent: {
-                    templateUrl: "templates/ordini.html",
-                    controller: 'OrdiniController'
-                }
-            }
-        })
-		.state('app.tavolo', {
+		    .state('app.tavolo', {
             url: "/tavolo",
-			params: {
+			      params: {
                 idTavolo: null
             },
             cache: false,
             views: {
                 viewContent: {
-                    templateUrl: "templates/tavolo.html",
+                    templateUrl: "templates/ordini-tavolo.html",
                     controller: 'TavoloController'
                 }
             }
         })
-		.state('app.sequenza', {
+		    .state('app.sequenza', {
             url: "/sequenza",
-			params: {
+			      params: {
                 idSequenza: null
             },
             cache: false,
@@ -143,7 +136,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
                 }
             }
         })
-		.state('app.cucina', {
+		    .state('app.cucina', {
             url: "/cucina",
             params: {
                 color: null,
@@ -158,11 +151,11 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash'])
             }
         });
 
-    $urlRouterProvider.otherwise(function ($injector, $location) {
-        var $state = $injector.get("$state");
-        $state.go("home");
-    });
-}]);
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            var $state = $injector.get("$state");
+            $state.go("home");
+        });
+  }]);
 
 /* global ionic */
 (function (angular, ionic) {
@@ -231,64 +224,63 @@ window.queries = [
 	"INSERT INTO 'Users' ('Name') VALUES ('Levano Castilla Carlos Miguel');"
 ];
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('App')
-        .controller('AppController', AppController);
+  angular
+    .module('App')
+    .controller('AppController', AppController);
 
-    AppController.$inject = ['$scope', '$ionicPopover'];
-    function AppController($scope, $ionicPopover) {
+  AppController.$inject = ['$scope', '$ionicPopover'];
+  function AppController($scope, $ionicPopover) {
 
-        $scope.items = [
-            {
-                color: "#E47500",
-                icon: "ion-android-people",
-                title: "Accompagnatore",
-				        view: "accompagnatore"
-            },
-            {
-                color: "#5AD863",
-                icon: "ion-ios-compose",
-                title: "Ordini",
-				        view: "ordini"
-            },
-            {
-                color: "#F8E548",
-                icon: "ion-cash",
-                title: "Cassa",
-				        view: "cassa"
-            },
-            {
-                color: "#AD5CE9",
-                icon: "ion-android-restaurant",
-                title: "Cucina",
-				        view: "cucina"
-            }
-        ];
+    $scope.items = [
+      {
+          color: "#E47500",
+          icon: "ion-android-people",
+          title: "Accompagnatore",
+          view: "accompagnatore"
+      },
+      {
+          color: "#5AD863",
+          icon: "ion-ios-compose",
+          title: "Ordini",
+          view: "ordini"
+      },
+      {
+          color: "#F8E548",
+          icon: "ion-cash",
+          title: "Cassa",
+          view: "cassa"
+      },
+      {
+          color: "#AD5CE9",
+          icon: "ion-android-restaurant",
+          title: "Cucina",
+          view: "cucina"
+      }
+    ];
 
-        $scope.exitApp = function () {
-            ionic.Platform.exitApp();
-        };
+    $scope.exitApp = function () {
+        ionic.Platform.exitApp();
+    };
 
-        $ionicPopover.fromTemplateUrl('templates/modals/popover.html', {
-            scope: $scope
-        }).then(function (popover) {
-            $scope.popover = popover;
-        });
+    $ionicPopover.fromTemplateUrl('templates/modals/popover.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    });
 
-        $scope.openPopover = function ($event) {
-            $scope.popover.show($event);
-        };
+    $scope.openPopover = function ($event) {
+        $scope.popover.show($event);
+    };
 
-        $scope.$on('$destroy', function() {
-            $scope.popover.remove();
-        });
-    }
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+  }
 })();
 (function() {
 'use strict';
-
     angular
         .module('App')
         .controller('GalleryController', GalleryController);

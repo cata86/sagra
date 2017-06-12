@@ -1,0 +1,55 @@
+<ion-view class="itemView" view-title="{{tavolo.descrizione}}" >
+    <ion-content>
+        <div class="item row">
+            <span align="center" class="col col-50">
+                <span>Storico Sequenze</span>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </span>
+            <span align="center" class="col col-50">
+                <span>Totale</span>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </span>
+        </div>
+
+        <div class="item item-divider item-button-right sequenza-title">
+          <span>
+            <i class="icon ion-android-delete" style="font-size:2em; vertical-align:middle"></i>  SEQ. 1
+          </span>
+          <button class="button icon-left ion-plus-circled button-positive button-aggiungi" ng-click="editSequenza(1)">Aggiungi</button>
+        </div>
+           <ion-list can-swipe="true" class="list-ordini-tavolo">
+               <a class="item" ng-click="viewTable(tavolo)">
+                  Acqua naturale
+                  <span class="badge badge-assertive badge-qnt">3</span>
+               </a>
+               <a class="item" href="#">
+                  Pasta
+                  <span class="badge badge-assertive badge-qnt">1</span>
+               </a>
+               <a class="item" href="#">
+                  Cotoletta
+                  <span class="badge badge-assertive badge-qnt">2</span>
+               </a>
+           </ion-list>
+        <div class="row">
+            <span align="right" class="col col-100">
+                <span>Totale: 0€</span>
+            </span>
+        </div>
+        <div class="item item-divider sequenza-aggiungi">
+          <a href="#">
+            Aggiungi una sequenza
+          </a>
+        </div>
+    </ion-content>
+</ion-view>

@@ -2,8 +2,12 @@
     <ion-side-menu-content>
         <ion-nav-bar class="bar-dark">
             <ion-nav-back-button></ion-nav-back-button>
-            <ion-nav-buttons side="left"><button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button></ion-nav-buttons>
-            <ion-nav-buttons side="right"><button class="button button-icon button-clear ion-more" ng-click="openPopover($event)"></button></ion-nav-buttons>
+            <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+              <button class="button button-icon button-clear ion-more" ng-click="openPopover($event)"></button>
+            </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="viewContent" animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
@@ -21,7 +25,10 @@
             </ion-list>
         </ion-content>
         <ion-footer-bar class="bar-light">
-            <div class="button-bar"><button class="button button-icon icon ion-home" nav-clear menu-close nav-direction="exit" ui-sref="home">Home</button>                <button class="button button-icon icon ion-log-out" on-tap="exitApp()">Exit</button></div>
+            <div class="button-bar">
+              <button class="button button-icon icon ion-home" nav-clear menu-close nav-direction="exit" ui-sref="home">Home</button>
+              <button class="button button-icon icon ion-log-out" on-tap="exitApp()">Exit</button>
+            </div>
         </ion-footer-bar>
     </ion-side-menu>
 </ion-side-menus>

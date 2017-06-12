@@ -31,7 +31,7 @@
     }
 
     if (!$scope.item.color) {
-        $ionicViewSwitcher.nextDirection('Indietro');
+        $ionicViewSwitcher.nextDirection('back');
         $ionicHistory.nextViewOptions({
             disableBack: true,
             disableAnimate : true,

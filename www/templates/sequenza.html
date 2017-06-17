@@ -1,70 +1,83 @@
-<ion-view class="itemView" ng-style="{ 'background-color': item.color }">
-    <ion-nav-title>
-      Edit Sequenza
-    </ion-nav-title>
-    <ion-content>
-        <div class="list">
-            <div class="item item-button-right">
-                Pasta ragu<span class="badge badge-assertive item item-button-right">0</span>
-                <div class="buttons">
-                    <button class="button button-positive">
-                        <i class="icon ion-ios-plus"></i>
-                    </button>
-                    <button class="button button-assertive">
-                        <i class="icon ion-ios-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="item item-button-right">
-                Pasta pomodoro
-                <button class="button button-positive">
-                    <i class="icon ion-ios-telephone"></i>
-                </button>
-                <span class="badge badge-assertive">0</span>
-            </div>
-            <div class="item item-button-right">
-                Lasagna
-                <button class="button button-positive">
-                    <i class="icon ion-ios-telephone"></i>
-                </button>
-                <span class="badge badge-assertive">0</span>
-            </div>
-            <div class="item item-button-right">
-                Tortellini
-                <button class="button button-positive">
-                    <i class="icon ion-ios-telephone"></i>
-                </button>
-                <span class="badge badge-assertive">0</span>
-            </div>
+<ion-view class="itemView" view-title="Aggiungi pietanze" >
+  <ion-content>
+    <ion-list can-swipe="true" class="list-pietanze">
+      <div class="item item-button-right">
+        Pasta ragu
+        <div class="buttons">
+          <button class="button button-calm">
+            <i class="icon ion-ios-minus"></i>
+          </button>
+          <span class="qnt-ordinata"><strong>100</strong></span>
+          <button class="button button-positive">
+            <i class="icon ion-ios-plus"></i>
+          </button>
         </div>
+      </div>
+      <div class="item item-button-right ">
+        <div class="nome-pietanza"> Pasta pomodoro</div>
+        <div class="buttons">
+          <button class="button button-calm">
+            <i class="icon ion-ios-minus"></i>
+          </button>
+          <span class="qnt-ordinata"><strong>10</strong></span>
+          <button class="button button-positive">
+            <i class="icon ion-ios-plus"></i>
+          </button>
+        </div>
+      </div>
 
 
-        <div class="tabs tabs-icon-left">
+
+
+    </ion-list>
+
+    <ion-slide-box>
+      <ion-slide>
+        <div class="row">
+          <div class="col">
             <a class="tab-item">
                 <i class="icon ion-home"></i>
                 Coperti
             </a>
+          </div>
+          <div class="col">
             <a class="tab-item">
-                <i class="icon ion-star"></i>
-                Primi
+              <i class="icon ion-star"></i>
+              Primi
             </a>
+          </div>
+          <div class="col">
             <a class="tab-item">
-                <i class="icon ion-gear-a"></i>
-                Secondi
+              <i class="icon ion-star"></i>
+              Secondi
             </a>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row">
+          <div class="col">
             <a class="tab-item">
-                <i class="icon ion-gear-a"></i>
+                <i class="icon ion-pizza"></i>
                 Pizze
             </a>
+          </div>
+          <div class="col">
             <a class="tab-item">
-                <i class="icon ion-gear-a"></i>
-                Bevande
+              <i class="icon ion-star"></i>
+              Primi
             </a>
+          </div>
+          <div class="col">
             <a class="tab-item">
-                <i class="icon ion-gear-a"></i>
-                Dolci
+              <i class="icon ion-star"></i>
+              Secondi
             </a>
+          </div>
         </div>
+      </ion-slide>
+    </ion-slide-box>
+
 
     </ion-content>
 </ion-view>

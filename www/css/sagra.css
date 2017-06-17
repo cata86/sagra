@@ -1,5 +1,32 @@
+/********************* generali ***********************/
 span {
   font-size: 18px;
+}
+
+/********************* accompagnatore.html ***********************/
+
+.list-accompagnatore .item {
+  font-size: 18px;
+}
+
+/********************* ordini.html ***********************/
+
+.list-ordini .item {
+  font-size: 18px;
+}
+
+.list-ordini .item .icon {
+  font-size: 20px;
+}
+
+/********************* ordini-tavolo.html ***********************/
+
+.list-ordini-tavolo .item {
+  font-size: 18px;
+}
+
+.list-ordini-tavolo .item .icon {
+  font-size: 20px;
 }
 
 .badge-qnt {
@@ -22,21 +49,22 @@ span {
   border-top-width : medium
 }
 
-.list-ordini .item {
+/********************* sequenza.html ***********************/
+
+.list-pietanze .item {
   font-size: 18px;
 }
 
-/*dimensione icone lista ordini.html*/
-.list-ordini .item .icon {
-  font-size: 20px;
+.list-pietanze .nome-pietanza {
+  white-space: normal;
+  max-width: 155px;
 }
 
-.list-ordini-tavolo .item {
-  font-size: 18px;
+.qnt-ordinata {
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 40px;
+  text-align: center;
 }
 
-/*dimensione icone lista ordini-tavolo.html*/
-.list-ordini-tavolo .item .icon {
-  font-size: 20px;
-}
 

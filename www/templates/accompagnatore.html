@@ -1,15 +1,57 @@
 <ion-view class="itemView" view-title="{{item.title}}">
-    <ion-content  overflow-scroll="true">
-        <i class="icon {{item.icon}}" style="font-size:1em;color:white"></i>
-        <ion-list can-swipe="true">
-            <ion-item ng-repeat="tavolo in tavoli" class="animate-item">
-                <div class="item item-button-right">
-                    {{tavolo.descrizione}}
-                    <button class="button button-positive">
-                        Accomoda
-                    </button>
-                </div>
-            </ion-item>
+    <!--<ion-content overflow-scroll="true">-->
+         <!--<ion-list can-swipe="true" class="list-accompagnatore">
+            <a class="item item-button-right"  ng-click="" ng-repeat="tavolo in tavoli">
+                {{tavolo.descrizione}}
+                <button class="button button-positive">
+                  Accomoda
+                </button>
+            </a>
         </ion-list>
-    </ion-content>
+        </ion-content>-->
+
+
+    <ion-content scroll="false">
+          	<tab-slide-box tabs-position="bottom">
+			    	<ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)">
+			            <ion-slide>
+			                <h3>Home content</h3>
+			            </ion-slide>
+			            <ion-slide>
+			                <h3>Games content</h3>
+			            </ion-slide>
+			            <ion-slide>
+			                <h3>Mail content</h3>
+			            </ion-slide>
+						<ion-slide>
+			                <h3>Car content</h3>
+			            </ion-slide>
+			            <ion-slide>
+			                <h3>Profile content</h3>
+			            </ion-slide>
+			            <ion-slide>
+			                <h3>Favourites content</h3>
+			            </ion-slide>
+						<ion-slide>
+			                <h3>Chats content</h3>
+			            </ion-slide>
+						<ion-slide>
+			                <h3>Settings content</h3>
+			            </ion-slide>
+						<ion-slide>
+			                <h3>Photos content</h3>
+			            </ion-slide>
+						<ion-slide>
+			                <h3>Pets content</h3>
+			            </ion-slide>
+			        </ion-slide-box>
+					<div class="tsb-icons">
+			    		<div class="tsb-ic-wrp">
+							<ion-scroll direction="x" class="tsb-hscroll">
+								<a href="javascript:;" class="{{tab.icon}}" ng-repeat="tab in tabs" on-finish-render="test()">{{tab.text}}</a>
+							</ion-scroll>
+						</div>
+			    	</div>
+          	</tab-slide-box>
+        </ion-content>
 </ion-view>

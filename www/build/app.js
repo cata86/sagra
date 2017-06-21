@@ -330,87 +330,8 @@ window.queries = [
 		//2. http://codepen.io/anon/pen/meQJvp
 	}
 })();
-(function(){
-angular.module('App')
-.factory('Tavoli', function(lodash) {
-  var tavoli = [{
-    id: 0,
-    numero: 0,
-    descrizione: 'Tavolo 0',
-    stato: 'in_attesa'
-  }, {
-    id: 1,
-    numero: 1,
-    descrizione: 'Tavolo 1',
-    stato: 'in_attesa'
-  }, {
-    id: 2,
-    numero: 2,
-    descrizione: 'Tavolo 2',
-    stato: 'libero'
-  }, {
-    id: 3,
-    numero: 3,
-    descrizione: 'Tavolo 3',
-    stato: 'ordinato'
-  },{
-    id: 4,
-    numero: 4,
-    descrizione: 'Tavolo 4',
-    stato: 'in_attesa'
-  }, {
-    id: 5,
-    numero: 5,
-    descrizione: 'Tavolo 5',
-    stato: 'in_attesa'
-  }, {
-    id: 6,
-    numero: 6,
-    descrizione: 'Tavolo 6',
-    stato: 'libero'
-  }, {
-    id: 7,
-    numero: 7,
-    descrizione: 'Tavolo 7',
-    stato: 'ordinato'
-  }];
-
-  return {
-    all: function() {
-      return tavoli;
-    },
-    inAttesa: function() {
-      return lodash.filter(tavoli, { 'stato': 'in_attesa' })
-    },
-    remove: function(tavolo) {
-      tavoli.splice(tavoli.indexOf(tavolo), 1);
-    },
-    get: function(tavoloId) {
-      for (var i = 0; i < tavoli.length; i++) {
-        if (tavoli[i].id === parseInt(tavoloId)) {
-          return tavoli[i];
-        }
-      }
-      return null;
-    }
-  };
-})
-})();
-(function() {
-'use strict';
-
-    angular
-        .module('App')
-        .controller('SequenzaController', SequenzaController);
-
-    SequenzaController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Tavoli'];
-    function SequenzaController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Tavoli) {
 
 
-		console.log($stateParams.idSequenza);
-
-    }
-})();
 (function() {
 'use strict';
 

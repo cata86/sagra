@@ -19,6 +19,17 @@ span {
   font-size: 20px;
 }
 
+.list-ordini .orario{
+  font-size: 14px;
+}
+
+.list-ordini .item .row {
+  padding: 0px;
+}
+
+.list-ordini .item .row .col {
+  padding: 0px;
+}
 /********************* ordini-tavolo.html ***********************/
 
 .list-ordini-tavolo .item {

@@ -1,6 +1,6 @@
 <ion-view class="itemView" view-title="{{tavolo.descrizione}}" >
     <ion-content>
-        <div class="item row">
+        <!--<div class="item row">
             <span align="center" class="col col-50">
                 <span>Storico Sequenze</span>
                 <label class="toggle">
@@ -19,7 +19,7 @@
                     </div>
                 </label>
             </span>
-        </div>
+        </div>-->
 
         <div class="item item-divider item-button-right sequenza-title">
           <span>
@@ -45,6 +45,16 @@
             <span align="right" class="col col-100">
                 <span>Totale: 0€</span>
             </span>
+        </div>
+        <div class="row">
+            <span align="right" class="col col-100">
+                <span>A persona: 0€</span>
+            </span>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>
+          </div>
         </div>
         <div class="item item-divider sequenza-aggiungi">
           <a href="#">

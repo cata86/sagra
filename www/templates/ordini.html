@@ -4,13 +4,29 @@
             <a class="{{btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setInAttesa()" >In Attesa</a>
             <a class="{{!btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
         </div>
+        <div class="bar bar-header item-input-inset" >
+          <input type="text" placeholder="Ricerca tavolo" ng-model="search.descrizione" />
+        </div>
         <ion-list can-swipe="true" class="list-ordini">
-            <a class="item item-icon-left item-icon-right"  ng-click="viewTable(tavolo)" ng-repeat="tavolo in tavoli">
-                <i class="icon ion-clock" style="color: red" ng-show="{{btnSelectedInAttesa}}"></i>
-                <span  ng-show="{{!btnSelectedInAttesa}}"></span>
-                {{tavolo.descrizione}}
-                <i class="icon ion-chevron-right" ></i>
-            </a>
+          <a class="item item-icon-left item-icon-right"  ng-click="viewTable(tavolo)" ng-repeat="tavolo in tavoli | filter:search">
+            <i class="icon ion-clock" style="color: red" ng-show="{{btnSelectedInAttesa}}"></i>
+            <span ng-show="{{!btnSelectedInAttesa}}"></span>
+            <div class="row">
+              <div class="col">
+                <span>{{tavolo.descrizione}}</span>
+              </div>
+              <div class="col">
+                <span class="orario">{{tavolo.orario}}</span>
+              </div>
+              <div class="col">
+                <i ng-show="{{tavolo.stato=='richiesto_da_palmare'}}" class="icon ion-person"  ></i>
+              </div>
+            </div>
+            <i class="icon ion-chevron-right" ></i>
+          </a>
         </ion-list>
+
+
+
   </ion-content>
 </ion-view>

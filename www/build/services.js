@@ -5,42 +5,50 @@ angular.module('App')
     id: 0,
     numero: 0,
     descrizione: 'Tavolo 0',
-    stato: 'in_attesa'
+    stato: 'in_attesa',
+    orario: '19:30'
   }, {
     id: 1,
     numero: 1,
     descrizione: 'Tavolo 1',
-    stato: 'in_attesa'
+    stato: 'richiesto_da_palmare',
+    orario: '19:00'
   }, {
     id: 2,
     numero: 2,
     descrizione: 'Tavolo 2',
-    stato: 'libero'
+    stato: 'libero',
+    orario: ''
   }, {
     id: 3,
     numero: 3,
     descrizione: 'Tavolo 3',
-    stato: 'ordinato'
+    stato: 'ordinato',
+    orario: ''
   },{
     id: 4,
     numero: 4,
     descrizione: 'Tavolo 4',
-    stato: 'in_attesa'
+    stato: 'in_attesa',
+    orario: '19:30'
   }, {
     id: 5,
     numero: 5,
-    descrizione: 'Tavolo 5',
-    stato: 'in_attesa'
+    descrizione: 'Tavolo 50',
+    stato: 'in_attesa',
+    orario: '20:30'
   }, {
     id: 6,
     numero: 6,
     descrizione: 'Tavolo 6',
-    stato: 'libero'
+    stato: 'libero',
+    orario: ''
   }, {
     id: 7,
     numero: 7,
     descrizione: 'Tavolo 7',
-    stato: 'ordinato'
+    stato: 'ordinato',
+    orario: ''
   }];
 
   return {
@@ -48,7 +56,11 @@ angular.module('App')
       return tavoli;
     },
     inAttesa: function() {
-      return lodash.filter(tavoli, { 'stato': 'in_attesa' })
+      return lodash.sortBy(
+        lodash.filter(tavoli, function(tav){
+            return _.includes(['in_attesa', 'richiesto_da_palmare'], tav.stato);
+        }),
+        ["orario", "numero"]);
     },
     remove: function(tavolo) {
       tavoli.splice(tavoli.indexOf(tavolo), 1);

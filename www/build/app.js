@@ -81,6 +81,19 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               }
           }
         })
+        .state('app.accompagnatoreTavolo', {
+          url: "/accompagnatore/tavolo",
+			    params: {
+            tavoloReale: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/accompagnatore-tavolo.html",
+                  controller: 'AccompagnatoreTavoloController'
+              }
+          }
+        })
 		    .state('app.cassa', {
           url: "/cassa",
           params: {

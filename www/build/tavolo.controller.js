@@ -8,9 +8,7 @@
     TavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Tavoli'];
     function TavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Tavoli) {
 
-
       $scope.tavolo = Tavoli.get($stateParams.idTavolo);
-      console.log($scope.tavolo);
 
       $scope.editSequenza = function(idSequenza){
         $state.go('app.sequenza', { idSequenza: idSequenza});

@@ -1,11 +1,9 @@
 <ion-view class="itemView" view-title="{{item.title}}">
     <ion-content overflow-scroll="true">
          <ion-list can-swipe="true" class="list-accompagnatore">
-            <a class="item item-button-right"  ng-click="" ng-repeat="tavolo in tavoli">
-                {{tavolo.descrizione}}
-                <button class="button button-positive">
-                  Accomoda
-                </button>
+            <a class="item item-icon-right" ui-sref="app.accompagnatoreTavolo({tavoloReale:tavoloReale})" ng-repeat="tavoloReale in tavoliReali">
+                {{tavoloReale.descrizione}}
+                <i class="icon ion-chevron-right" ></i>
             </a>
         </ion-list>
   </ion-content>

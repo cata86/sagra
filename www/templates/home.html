@@ -1,12 +1,16 @@
 <ion-view class="homeView" view-title="Home" hide-nav-bar="true">
     <ion-content>
-        <div class="row row-center">
+        <form name="homeForm">
+          <div class="row row-center">
             <div class="col col-center text-center">
-                <h1 class="animated bounceInDown" on-tap="HelloWorld()">Sagra della rana</h1>
-                <div id="container" >
-                  <input type="text" placeholder="Nome operatore"  style="width: 100%"/>
-                </div>
-                <button class="button button-outline button-block button-light animated bounceInUp" ui-sref="app.gallery">Entra</button></div>
-        </div>
+              <h1 class="animated bounceInDown">Sagra della rana</h1>
+              <div id="container" >
+                <input type="text" required placeholder="Nome operatore" ng-maxlength="20"
+                 ng-model="data.nomeOperatore" style="width: 100%"/>
+              </div>
+              <button ng-disabled="homeForm.$invalid"  class="button button-outline button-block button-light animated bounceInUp" ng-click="entra()">Entra</button>
+            </div>
+          </div>
+        </form>
     </ion-content>
 </ion-view>

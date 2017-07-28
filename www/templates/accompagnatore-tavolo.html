@@ -1,15 +1,17 @@
 <ion-view class="itemView" view-title="Tavoli accomodati" >
-    <ion-content>
+  <ion-content>
 
-<div class="item item-divider">
-        <button class="button button-positive" ng-click="">Accomoda nuovo tavolo</button>
-        </div>
-         <ion-list can-swipe="true" class="list-accompagnatore">
-            <a class="item item-button-right"  ng-click="" ng-repeat="tavoloAccomodato in tavoliAccomodatiByTavoloId">
-                {{tavoloAccomodato.descrizione}}
-                <button class="button button-assertive" ng-click="">Chiudi</button>
-            </a>
-        </ion-list>
+    <div class="item item-divider">
+      <button class="button button-positive" ng-click="apriTavoloAccomodato()">Accomoda nuovo tavolo</button>
+    </div>
+    <ion-list can-swipe="true" class="list-accompagnatore">
+
+      <a class="item item-icon-left item-button-right"  ng-click="" ng-repeat="tavoloAccomodato in tavoliAccomodatiByTavoloId">
+        <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavoloAccomodato.stato)}}" title="{{tavoloAccomodato.stato}}"></i>
+        {{tavoloAccomodato.descrizione}}
+        <button class="button button-assertive" ng-click="chiudiTavoloAccomodato(tavoloAccomodato)">Chiudi</button>
+      </a>
+    </ion-list>
+
   </ion-content>
-
 </ion-view>

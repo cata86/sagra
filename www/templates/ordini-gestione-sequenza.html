@@ -25,32 +25,24 @@
           <span>
             <i class="icon ion-android-delete" style="font-size:2em; vertical-align:middle"></i>  SEQ. 1
           </span>
-          <button class="button icon-left ion-plus-circled button-positive button-aggiungi" ng-click="editSequenza(1)">Aggiungi</button>
+          <button class="button icon-left ion-plus-circled button-positive button-aggiungi" ng-click="modificaPietanzeSequenza(1)">Menù</button>
         </div>
            <ion-list can-swipe="true" class="list-ordini-tavolo">
-               <a class="item" ng-click="viewTable(tavolo)">
-                  Acqua naturale
-                  <span class="badge badge-assertive badge-qnt">3</span>
-               </a>
-               <a class="item" href="#">
-                  Pasta
-                  <span class="badge badge-assertive badge-qnt">1</span>
-               </a>
-               <a class="item" href="#">
-                  Cotoletta
-                  <span class="badge badge-assertive badge-qnt">2</span>
+               <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate">
+                  {{pietanzaOrdinata.nome}}
+                  <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
                </a>
            </ion-list>
         <div class="row">
             <span align="right" class="col col-100">
-                <span>Totale: 0€</span>
+                <span>Totale: {{totale  | number:2}}€</span>
             </span>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <span align="right" class="col col-100">
                 <span>A persona: 0€</span>
             </span>
-        </div>
+        </div>-->
         <div class="row">
           <div class="col text-right">
             <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>

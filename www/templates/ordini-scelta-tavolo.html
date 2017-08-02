@@ -1,31 +1,27 @@
 <ion-view class="itemView" view-title="{{item.title}} - Selezione tavolo" >
     <ion-content overflow-scroll="true">
+
         <div class="button-bar">
             <a class="{{btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setInAttesa()" >In Attesa</a>
             <a class="{{!btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
         </div>
         <div class="bar bar-header item-input-inset" >
-          <input type="text" placeholder="Ricerca tavolo" ng-model="search.descrizione" />
+          <input type="text" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
         <ion-list can-swipe="true" class="list-ordini">
-          <a class="item item-icon-left item-icon-right"  ng-click="viewTable(tavolo)" ng-repeat="tavolo in tavoli | filter:search">
-            <i class="icon ion-clock" style="color: red" ng-show="{{btnSelectedInAttesa}}"></i>
-            <span ng-show="{{!btnSelectedInAttesa}}"></span>
+          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter:search">
+            <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavoloAccomodato.stato}}"></i>
             <div class="row">
               <div class="col">
                 <span>{{tavolo.descrizione}}</span>
               </div>
               <div class="col">
-                <span class="orario">{{tavolo.orario}}</span>
-              </div>
-              <div class="col">
-                <i ng-show="{{tavolo.stato=='richiesto_da_palmare'}}" class="icon ion-person"  ></i>
+                <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>
               </div>
             </div>
             <i class="icon ion-chevron-right" ></i>
           </a>
         </ion-list>
-
 
 
   </ion-content>

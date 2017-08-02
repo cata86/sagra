@@ -23,7 +23,7 @@
     $scope.caricaTavoliAccomodatiByTavoloId($scope.tavoloRealeSelezionato);
 
     $scope.getColoreStatoTavolo = function(statoTavoloAccomodato){
-      var colore =lodash.filter(Constants.statoTavolo, function(statoTavolo){
+      var colore = lodash.filter(Constants.statoTavolo, function(statoTavolo){
           return statoTavolo.stato === statoTavoloAccomodato;
       })[0].colore;
       return {"color": colore};

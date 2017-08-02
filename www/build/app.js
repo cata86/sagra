@@ -118,34 +118,36 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
           cache: false,
           views: {
               viewContent: {
-                  templateUrl: "templates/ordini.html",
-                  controller: 'OrdiniController'
+                  templateUrl: "templates/ordini-scelta-tavolo.html",
+                  controller: 'OrdiniSceltaTavoloController'
               }
             }
         })
-		    .state('app.tavolo', {
-            url: "/tavolo",
+		    .state('app.ordiniGestioneSequenza', {
+            url: "/ordini/sequenza",
 			      params: {
-                idTavolo: null
+                tavolo: null,
+                pietanzeOrdinate: null,
+                numSequenza: null
             },
             cache: false,
             views: {
                 viewContent: {
-                    templateUrl: "templates/ordini-tavolo.html",
-                    controller: 'TavoloController'
+                    templateUrl: "templates/ordini-gestione-sequenza.html",
+                    controller: 'OrdiniGestioneSequenzaController'
                 }
             }
         })
-		    .state('app.sequenza', {
-            url: "/sequenza",
+		    .state('app.ordiniSceltaPietanza', {
+            url: "/ordini/pietanza",
 			      params: {
-                idSequenza: null
+                data: null,
             },
             cache: false,
             views: {
                 viewContent: {
-                    templateUrl: "templates/sequenza.html",
-                    controller: 'SequenzaController'
+                    templateUrl: "templates/ordini-scelta-pietanza.html",
+                    controller: 'OrdiniSceltaPietanzaController'
                 }
             }
         })

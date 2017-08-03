@@ -3,42 +3,39 @@ span {
   font-size: 18px;
 }
 
-/********************* accompagnatore.html ***********************/
+/********************* accompagnatore.html e accompagnatore-tavolo.html ***********************/
 
 .list-accompagnatore .item {
   font-size: 18px;
 }
 
-/********************* ordini.html ***********************/
-
-.list-ordini .item {
-  font-size: 18px;
-}
-
-.list-ordini .item .icon {
+.list-accompagnatore .item .icon {
   font-size: 20px;
 }
 
-.list-ordini .orario{
+/********************* ordini-scelta-tavolo.html ***********************/
+
+.list-ordini-scelta-tavolo .item {
+  font-size: 18px;
+}
+
+.list-ordini-scelta-tavolo .item .icon {
+  font-size: 20px;
+}
+
+.list-ordini-scelta-tavolo .orario{
   font-size: 14px;
 }
 
-.list-ordini .item .row {
+.list-ordini-scelta-tavolo .item .row {
   padding: 0px;
 }
 
-.list-ordini .item .row .col {
+.list-ordini-scelta-tavolo .item .row .col {
   padding: 0px;
 }
-/********************* ordini-tavolo.html ***********************/
 
-/*.list-ordini-tavolo .item {
-  font-size: 18px;
-}
-
-.list-ordini-tavolo .item .icon {
-  font-size: 20px;
-}*/
+/********************* ordini-gestione-sequenza.html ***********************/
 
 .badge-qnt {
   font-size: 18px;
@@ -60,7 +57,7 @@ span {
   border-top-width : medium
 }
 
-/********************* sequenza.html ***********************/
+/********************* ordini-scelta-pietanza.html ***********************/
 
 .list-pietanze .item {
   font-size: 18px;

@@ -1,4 +1,4 @@
-<ion-view class="itemView" view-title="{{tavolo.descrizione}}" >
+<ion-view class="itemView" view-title="{{data.tavolo.descrizione}}" >
     <ion-content>
         <!--<div class="item row">
             <span align="center" class="col col-50">
@@ -27,7 +27,7 @@
           </span>
           <button class="button icon-left ion-plus-circled button-positive button-aggiungi" ng-click="modificaPietanzeSequenza(1)">Menù</button>
         </div>
-           <ion-list can-swipe="true" class="list-ordini-tavolo">
+           <ion-list can-swipe="true" >
                <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate">
                   {{pietanzaOrdinata.nome}}
                   <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>

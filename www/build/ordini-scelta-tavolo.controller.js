@@ -27,6 +27,7 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwi
     $scope.tavoliAccomodatiInAttesa = [];
     $scope.caricaTavoliAccomodati = function( ){
       //TODO verificare ordine orario forse desc
+      //TODO manca numCoperti (sistema getsione sequenz)
       Ordinatore.getListaTavoliAccomodati({statoOrdinato: true}).then(function(response){
         $scope.tavoliAccomodatiTutti = lodash.sortBy(
           response.data, ['accomodatoOrario', 'codice']
@@ -79,7 +80,7 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwi
             disableAnimate : true,
             historyRoot  : true
         });
-        $state.go('app.gallery');
+       // $state.go('app.gallery');
     }
   }
 

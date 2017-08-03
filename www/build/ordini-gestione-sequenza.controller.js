@@ -38,6 +38,19 @@
       }
 
       $scope.inviaOrdine = function(){
+        var pietanzeOrdine = [];
+        lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
+          var pietanzaOrdinata = {
+            note: "",
+            numSequenza: $scope.data.numSequenzaSelezionato,
+            pietanza: {
+              id: value.id
+            },
+            quantita: value.quantita
+          };
+          pietanzeOrdine.push(pietanzaOrdinata);
+        });
+
         var confirmPopup = $ionicPopup.confirm({
           title: 'Invio ordine',
           template: 'Procedere con l\'invio dell\'ordine?'
@@ -45,6 +58,18 @@
 
         confirmPopup.then(function(res) {
           if(res) {
+            Ordinatore.creaOrdine(
+              {
+                asporto: $scope.data.tavolo.asporto,
+                idTavoloAccomodato: $scope.data.tavolo.id,
+                numCoperti: 0,
+                personaOrdine: config.operatore,
+                pietanzeOrdinate: pietanzeOrdine
+              }
+            ).then(function(response){
+              console.log(response.data);
+               $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+            });
           }
         });
       }

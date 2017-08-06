@@ -1,55 +1,33 @@
 <ion-view class="itemView" view-title="{{data.tavolo.descrizione}}" >
     <ion-content>
-        <!--<div class="item row">
-            <span align="center" class="col col-50">
-                <span>Storico Sequenze</span>
-                <label class="toggle">
-                    <input type="checkbox">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
+        <div ng-repeat="seq in data.sequenze">
+          <div class="item item-divider item-button-right sequenza-title">
+            <span>
+              <i class="icon ion-android-delete" ng-click="rimuoviSequenza({{seq}})" style="font-size:2em; vertical-align:middle; cursor: pointer"></i>  SEQ. {{seq}}
             </span>
-            <span align="center" class="col col-50">
-                <span>Totale</span>
-                <label class="toggle">
-                    <input type="checkbox">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </span>
-        </div>-->
-
-        <div class="item item-divider item-button-right sequenza-title">
-          <span>
-            <i class="icon ion-android-delete" style="font-size:2em; vertical-align:middle"></i>  SEQ. 1
-          </span>
-          <button class="button icon-left ion-plus-circled button-positive button-aggiungi" ng-click="modificaPietanzeSequenza(1)">Menù</button>
-        </div>
-           <ion-list can-swipe="true" >
-               <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate">
+            <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
+            ng-click="modificaPietanzeSequenza({{seq}})">Menù</button>
+          </div>
+          <ion-list can-swipe="true" >
+              <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate | filter: { numSequenza: seq }">
                   {{pietanzaOrdinata.nome}}
                   <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
-               </a>
-           </ion-list>
+              </a>
+          </ion-list>
+        </div>
+
         <div class="row">
             <span align="right" class="col col-100">
                 <span>Totale: {{totale  | number:2}}€</span>
             </span>
         </div>
-        <!--<div class="row">
-            <span align="right" class="col col-100">
-                <span>A persona: 0€</span>
-            </span>
-        </div>-->
         <div class="row">
           <div class="col text-right">
             <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>
           </div>
         </div>
         <div class="item item-divider sequenza-aggiungi">
-          <a href="#">
+          <a ng-click="aggiungiSequenza()" style="cursor: pointer">
             Aggiungi una sequenza
           </a>
         </div>

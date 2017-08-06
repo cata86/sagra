@@ -34,11 +34,17 @@
         lodash.forEach($scope.pietanze, function(value, key) {
           var pietanzaOrdinata;
           if($scope.data){
-            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, {id:value.id});
+            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, {id:value.id, numSequenza: $scope.data.numSequenzaSelezionato});
           }
           value.quantita = 0;
-          if(pietanzaOrdinata)
+          if(pietanzaOrdinata && pietanzaOrdinata.numSequenza === $scope.data.numSequenzaSelezionato){
             value.quantita = pietanzaOrdinata.quantita;
+            value.numSequenza = pietanzaOrdinata.numSequenza;
+          }
+          if(!value.numSequenza)
+            value.numSequenza = $scope.data.numSequenzaSelezionato;
+
+
         });
       });
     };
@@ -60,14 +66,24 @@
 
     // run this function when either hard or soft back button is pressed
     var doCustomBack = function() {
-      //rimando indietro tt le pietanze con quantita diversa da zero
+      //rimando indietro tt le pietanze con quantita diversa da zero della sequenza
+      var pietanzeOrdinate = lodash.filter($scope.pietanze, function(obj){
+        return (obj.quantita > 0 && obj.numSequenza === $scope.data.numSequenzaSelezionato);
+      });
+      //rimando indietro tt le pietanze con quantita diversa da zero delle altre sequenze
+      lodash.filter($scope.data.pietanzeOrdinate, function(obj){
+        if (obj.quantita > 0 && obj.numSequenza !== $scope.data.numSequenzaSelezionato) {
+          pietanzeOrdinate.push(obj);
+        }
+      });
+
       $state.go('app.ordiniGestioneSequenza', {
         tavolo: $scope.data.tavolo,
-        pietanzeOrdinate: lodash.filter($scope.pietanze, function(obj){
-          return obj.quantita > 0;
-        }),
-        numSequenzaSelezionato : $scope.data.numSequenzaSelezionato
-      });
+        pietanzeOrdinate: pietanzeOrdinate,
+        numSequenzaSelezionato : $scope.data.numSequenzaSelezionato,
+        sequenze : $scope.data.sequenze
+      },
+      {reload: true});
     };
 
     // override soft back

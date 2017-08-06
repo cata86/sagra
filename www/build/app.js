@@ -71,7 +71,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
           url: "/accompagnatore",
           params: {
               color: null,
-              icon: null
+              icon: null,
+              title: null
           },
           cache: false,
           views: {
@@ -128,7 +129,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
 			      params: {
                 tavolo: null,
                 pietanzeOrdinate: null,
-                numSequenza: null
+                numSequenza: null,
+                sequenze: null
             },
             cache: false,
             views: {
@@ -221,107 +223,9 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
 	.directive('select', SelectDirective);*/
 
 })(angular, ionic);
-window.queries = [
-	//Drop tables
-   "DROP TABLE IF EXISTS Users;",
-	//Create tables
-	"CREATE TABLE Users (IdUser integer primary key autoincrement, Name text not null);",
-	//Insert Users
-	"INSERT INTO 'Users' ('Name') VALUES ('Juan David Nicholls Cardona');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Khriztian Moreno Zuluaga');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Cristian Rivas Buitrago');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Juan David Sánchez');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Nicolas Molina');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Miyamoto Musashi FIlander');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Didier Hernandez');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Luis Eduardo Oquendo Pérez');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Carlos Rojas');",
-	"INSERT INTO 'Users' ('Name') VALUES ('Levano Castilla Carlos Miguel');"
-];
-(function () {
-  'use strict';
 
-  angular
-    .module('App')
-    .controller('AppController', AppController);
 
-  AppController.$inject = ['$scope', '$ionicPopover'];
-  function AppController($scope, $ionicPopover) {
 
-    $scope.items = [
-      {
-          color: "#E47500",
-          icon: "ion-android-people",
-          title: "Accompagnatore",
-          view: "accompagnatore"
-      },
-      {
-          color: "#5AD863",
-          icon: "ion-ios-compose",
-          title: "Ordini",
-          view: "ordini"
-      },
-      {
-          color: "#F8E548",
-          icon: "ion-cash",
-          title: "Cassa",
-          view: "cassa"
-      },
-      {
-          color: "#AD5CE9",
-          icon: "ion-android-restaurant",
-          title: "Cucina",
-          view: "cucina"
-      }
-    ];
-
-    $scope.exitApp = function () {
-        ionic.Platform.exitApp();
-    };
-
-    $ionicPopover.fromTemplateUrl('templates/modals/popover.html', {
-        scope: $scope
-    }).then(function (popover) {
-        $scope.popover = popover;
-    });
-
-    $scope.openPopover = function ($event) {
-        $scope.popover.show($event);
-    };
-
-    $scope.$on('$destroy', function() {
-        $scope.popover.remove();
-    });
-  }
-})();
-
-(function() {
-'use strict';
-
-    angular
-        .module('App')
-        .controller('ItemController', ItemController);
-
-    ItemController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory'];
-    function ItemController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory) {
-
-        $scope.item = {
-            title: $stateParams.title,
-            icon: $stateParams.icon,
-            color: $stateParams.color
-        };
-
-        if (!$scope.item.color) {
-            $ionicViewSwitcher.nextDirection('back');
-            $ionicHistory.nextViewOptions({
-                disableBack: true,
-                disableAnimate : true,
-                historyRoot  : true
-            });
-            $state.go('app.gallery');
-        }
-    }
-})();
 (function () {
 	'use strict';
 
@@ -646,37 +550,6 @@ window.queries = [
 			});
 
 			return deferred.promise;
-		};
-
-		self.preloadDataBase = function (enableLog) {
-			var deferred = $q.defer();
-
-			//window.open("data:text/plain;charset=utf-8," + JSON.stringify({ data: window.queries.join('').replace(/\\n/g, '\n') }));
-			if (window.sqlitePlugin === undefined) {
-				if(enableLog) console.log('%c ***************** Starting the creation of the database in the browser ***************** ', 'background: #222; color: #bada55');
-				self.db().transaction(function (tx) {
-					for (var i = 0; i < window.queries.length; i++) {
-						var query = window.queries[i].replace(/\\n/g, '\n');
-
-						if(enableLog) console.log(window.queries[i]);
-						tx.executeSql(query);
-					}
-				}, function (error) {
-					deferred.reject(error);
-				}, function () {
-					if(enableLog) console.log('%c ***************** Completing the creation of the database in the browser ***************** ', 'background: #222; color: #bada55');
-					deferred.resolve("OK");
-				});
-			}
-			else {
-				deferred.resolve("OK");
-			}
-
-			return deferred.promise;
-		};
-
-		self.executeSql = function (query, parameters) {
-			return $cordovaSQLite.execute(self.db(), query, parameters);
 		};
 	}
 })();

@@ -27,7 +27,7 @@
 
 
 
-    if (!$scope.item.color) {
+    if (!$scope.item.title) {
       $ionicViewSwitcher.nextDirection('Indietro');
       $ionicHistory.nextViewOptions({
           disableBack: true,

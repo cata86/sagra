@@ -10,7 +10,7 @@
         $scope.operatore = config.operatore;
 
         $scope.openItem = function(item){
-            $state.go('app.'+item.view, { title: item.title, icon: item.icon, color: item.color }, {}, {reload: true});
+            $state.go('app.'+item.view, { title: item.title, icon: item.icon, color: item.color }, {reload: true});
         };
     }
 })();

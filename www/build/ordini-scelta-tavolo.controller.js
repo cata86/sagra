@@ -73,14 +73,14 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwi
     }
 
 
-    if (!$scope.item.color) {
+    if (!$scope.item.title) {
         $ionicViewSwitcher.nextDirection('back');
         $ionicHistory.nextViewOptions({
             disableBack: true,
             disableAnimate : true,
             historyRoot  : true
         });
-       // $state.go('app.gallery');
+       $state.go('app.gallery');
     }
   }
 

@@ -33,7 +33,8 @@
       Accompagnatore.apriTavoloAccomodato(
         $scope.tavoloRealeSelezionato.id,
         config.operatore,
-        $scope.tavoloRealeSelezionato.asporto
+        $scope.tavoloRealeSelezionato.asporto,
+        0
       ).then(function(response){
         var confirmPopup = $ionicPopup.alert({
           title: 'Tavolo accomodato',

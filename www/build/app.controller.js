@@ -5,35 +5,47 @@
     .module('App')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$scope', '$ionicPopover', 'config'];
-  function AppController($scope, $ionicPopover, config) {
+  AppController.$inject = ['$scope', '$ionicPopover', 'config', '$rootScope'];
+  function AppController($scope, $ionicPopover, config, $rootScope) {
 
     $scope.operatore = config.operatore;
 
-    $scope.items = [
+    $rootScope.items = [
       {
-          color: "#E47500",
+          color: "#e63900",
           icon: "ion-android-people",
-          title: "Accompagnatore",
+          title: "Tavoli",
           view: "accompagnatore"
       },
       {
           color: "#5AD863",
-          icon: "ion-ios-compose",
+          icon: "ion-android-restaurant",
           title: "Ordini",
           view: "ordini"
       },
       {
-          color: "#F8E548",
-          icon: "ion-cash",
-          title: "Cassa",
-          view: "cassa"
+          color: "#f8cd49",
+          icon: "ion-android-car",
+          title: "Asporto",
+          view: "asporto"
       },
       {
           color: "#AD5CE9",
-          icon: "ion-android-restaurant",
-          title: "Cucina",
-          view: "cucina"
+          icon: "ion-ios-speedometer",
+          title: "Contatori",
+          view: "contatori"
+      },
+      {
+          color: "#6666ff",
+          icon: "ion-cash",
+          title: "Serate",
+          view: "serate"
+      },
+      {
+          color: "#cc0099",
+          icon: "ion-ios-compose",
+          title: "Modifica ordine",
+          view: "modifica-ordine"
       }
     ];
 

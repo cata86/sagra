@@ -1,0 +1,15 @@
+<ion-view class="itemView" view-title="{{item.title}}" >
+  <ion-content>
+    <div class="item item-divider">
+      <button class="button button-positive" ng-click="aggiungiContatore()">Aggiungi contatore</button>
+    </div>
+    <ion-list can-swipe="true" class="list-pietanze">
+      <div class="item item-button-right" ng-repeat="pietanza in data.pietanzeContatori">
+        <span class="nome-pietanza">{{pietanza.nome}}</span>
+        <span >qnt</span>
+      </div>
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,27 @@
+<ion-view class="configuraView" view-title="Configura" hide-nav-bar="false">
+    <ion-content scroll="false">
+        <form name="configuraForm">
+          <div class="list" >
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Host</span>
+                <input type="text" required ng-model="data.host"placeholder="Host">
+              </label>
+          </div>
+
+          <div style="padding-top: 20px">
+            <div class="item item-divider" style="text-align: center">
+              <span>Configura azioni</span>
+            </div>
+            <ion-scroll style="height: 250px">
+            <ion-list>
+              <ion-checkbox ng-repeat="item in data.itemConfigura" ng-model="item.checked" ng-checked="item.checked">{{ item.title }}</ion-checkbox>
+            </ion-list>
+              <ion-scroll/>
+          </div>
+
+          <button style="padding-top: 10px" ng-disabled="configuraForm.$invalid" class="button button-positive button-block button-light animated bounceInUp" ng-click="salvaConfigurazione()">Salva</button>
+        </form>
+    </ion-content>
+
+
+</ion-view>

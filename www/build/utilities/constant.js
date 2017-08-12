@@ -15,7 +15,7 @@ angular.module('App')
       },
       liberato: {
         stato: 'LIBERATO',
-        colore: 'white'
+        colore: 'blue'
       }
     }
   });

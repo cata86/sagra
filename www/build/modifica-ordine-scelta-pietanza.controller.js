@@ -3,10 +3,10 @@
 
   angular
       .module('App')
-      .controller('OrdiniSceltaPietanzaController', OrdiniSceltaPietanzaController);
+      .controller('ModificaOrdineSceltaPietanzaController', ModificaOrdineSceltaPietanzaController);
 
-  OrdiniSceltaPietanzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory',  'Ordinatore', 'lodash'];
-  function OrdiniSceltaPietanzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, Ordinatore, lodash) {
+  ModificaOrdineSceltaPietanzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory',  'Ordinatore', 'lodash'];
+  function ModificaOrdineSceltaPietanzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, Ordinatore, lodash) {
 
     $scope.data = $stateParams.data;
     $scope.idSagra = 1; //TODO
@@ -40,7 +40,6 @@
           if(pietanzaOrdinata && pietanzaOrdinata.numSequenza === $scope.data.numSequenzaSelezionato){
             value.quantita = pietanzaOrdinata.quantita;
             value.numSequenza = pietanzaOrdinata.numSequenza;
-            value.coperto = pietanzaOrdinata.coperto;
           }
           if(!value.numSequenza)
             value.numSequenza = $scope.data.numSequenzaSelezionato;

@@ -3,10 +3,10 @@
 
     angular
         .module('App')
-        .controller('OrdiniGestioneSequenzaController', OrdiniGestioneSequenzaController);
+        .controller('ModificaOrdineGestioneSequenzaController', ModificaOrdineGestioneSequenzaController);
 
-    OrdiniGestioneSequenzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'config', 'lodash'];
-    function OrdiniGestioneSequenzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, config, lodash) {
+    ModificaOrdineGestioneSequenzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'config', 'lodash'];
+    function ModificaOrdineGestioneSequenzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, config, lodash) {
 
       $scope.data = {
         tavolo: $stateParams.tavolo,
@@ -76,7 +76,6 @@
 
       $scope.inviaOrdine = function(){
         var pietanzeOrdine = [];
-        var numeroCopertiPietanza = 0;
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
           var pietanzaOrdinata = {
             note: "",
@@ -84,11 +83,8 @@
             pietanza: {
               id: value.id
             },
-            quantita: value.quantita,
-            coperto: value.coperto
+            quantita: value.quantita
           };
-          if(pietanzaOrdinata.coperto)
-            numeroCopertiPietanza = pietanzaOrdinata.quantita;
           pietanzeOrdine.push(pietanzaOrdinata);
         });
 
@@ -103,12 +99,12 @@
               {
                 asporto: $scope.data.tavolo.asporto,
                 idTavoloAccomodato: $scope.data.tavolo.id,
-                numCoperti: numeroCopertiPietanza,
+                numCoperti: $scope.data.tavolo.numCoperti,
                 personaOrdine: config.operatore,
                 pietanzeOrdinate: pietanzeOrdine
               }
             ).then(function(response){
-               $state.go('app.ordiniInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});
+               $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
             });
           }
         });

@@ -18,7 +18,7 @@ angular.module('App')
         headers: {'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTUwMzc3ODM3MX0.an4vxwTfUf_TWy6Vs6UdXxR_3mRy3z1xDHNN2CJZcdRNZkGwBXBB-07pQrOeAh5jDcivYmM9PeGZxkBe1tGWsA'}
       });
     },
-    apriTavoloAccomodato: function(idTavoloReale, accomodatoPersona, asporto){
+    apriTavoloAccomodato: function(idTavoloReale, accomodatoPersona, asporto, numCoperti, nomeAsporto){
       return $http({
         url: config.apiHost+'/api/tavoli/apriTavoloAccomodato',
         method: "POST",
@@ -26,7 +26,8 @@ angular.module('App')
           'idTavoloReale': idTavoloReale,
           'accomodatoPersona': accomodatoPersona,
           'asporto': asporto,
-          'numCoperti': 0
+          'numCoperti': numCoperti,
+          'nomeAsporto': nomeAsporto ? nomeAsporto : null
         },
         headers: {'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTUwMzc3ODM3MX0.an4vxwTfUf_TWy6Vs6UdXxR_3mRy3z1xDHNN2CJZcdRNZkGwBXBB-07pQrOeAh5jDcivYmM9PeGZxkBe1tGWsA'}
       });

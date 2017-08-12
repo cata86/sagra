@@ -19,7 +19,10 @@
     $scope.caricaTavoliReali = function( ){
     		Accompagnatore.getListaTavoliReali({soloLiberi: false}).then(function(response){
           $scope.tavoliReali = lodash.sortBy(
-            response.data, ['codice']
+            lodash.filter(response.data, function(tav){
+              return tav.asporto === false;
+            }),
+            ['codice']
           );
     		})
     	};

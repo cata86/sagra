@@ -1,0 +1,28 @@
+<ion-view class="itemView" view-title="Asporto" >
+    <ion-content>
+        <div>
+          <div class="item item-divider item-button-right sequenza-title">
+            <input type="text" style="width: 70%" placeholder="Nome asporto" ng-model="data.nomeAsporto" >
+            <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
+            ng-click="modificaPietanze()">Menù</button>
+          </div>
+          <ion-list can-swipe="true" >
+              <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate">
+                  {{pietanzaOrdinata.nome}}
+                  <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
+              </a>
+          </ion-list>
+        </div>
+
+        <div class="row">
+            <span align="right" class="col col-100">
+                <span>Totale: {{totale  | number:2}}€</span>
+            </span>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>
+          </div>
+        </div>
+    </ion-content>
+</ion-view>

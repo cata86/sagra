@@ -1,7 +1,8 @@
 (function() {
   var config = {
     operatore: null,
-    apiHost: 'http://localhost:8080'
+    apiHost: 'http://localhost:8080',
+    passwordConfigurazione: 'sagra'
   };
 
   angular.module('App')

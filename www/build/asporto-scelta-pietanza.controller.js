@@ -3,13 +3,14 @@
 
   angular
       .module('App')
-      .controller('OrdiniSceltaPietanzaController', OrdiniSceltaPietanzaController);
+      .controller('AsportoSceltaPietanzaController', AsportoSceltaPietanzaController);
 
-  OrdiniSceltaPietanzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory',  'Ordinatore', 'lodash'];
-  function OrdiniSceltaPietanzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, Ordinatore, lodash) {
+  AsportoSceltaPietanzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory',  'Ordinatore', 'lodash'];
+  function AsportoSceltaPietanzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, Ordinatore, lodash) {
 
     $scope.data = $stateParams.data;
     $scope.idSagra = 1; //TODO
+    $scope.numeroSequenzaDefault = 1;
 
     $scope.categoriaSelezionata = 1;
     $scope.categorie = [];
@@ -34,17 +35,14 @@
         lodash.forEach($scope.pietanze, function(value, key) {
           var pietanzaOrdinata;
           if($scope.data){
-            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, {id:value.id, numSequenza: $scope.data.numSequenzaSelezionato});
+            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, {id:value.id});
           }
           value.quantita = 0;
-          if(pietanzaOrdinata && pietanzaOrdinata.numSequenza === $scope.data.numSequenzaSelezionato){
-            value.quantita = pietanzaOrdinata.quantita;
-            value.numSequenza = pietanzaOrdinata.numSequenza;
+          value.numSequenza =  $scope.numeroSequenzaDefault;
+          if(pietanzaOrdinata){
             value.coperto = pietanzaOrdinata.coperto;
+            value.quantita = pietanzaOrdinata.quantita;
           }
-          if(!value.numSequenza)
-            value.numSequenza = $scope.data.numSequenzaSelezionato;
-
 
         });
       });
@@ -67,22 +65,16 @@
 
     // run this function when either hard or soft back button is pressed
     var doCustomBack = function() {
-      //rimando indietro tt le pietanze con quantita diversa da zero della sequenza
+      //rimando indietro tt le pietanze con quantita diversa da zero
       var pietanzeOrdinate = lodash.filter($scope.pietanze, function(obj){
-        return (obj.quantita > 0 && obj.numSequenza === $scope.data.numSequenzaSelezionato);
-      });
-      //rimando indietro tt le pietanze con quantita diversa da zero delle altre sequenze
-      lodash.filter($scope.data.pietanzeOrdinate, function(obj){
-        if (obj.quantita > 0 && obj.numSequenza !== $scope.data.numSequenzaSelezionato) {
-          pietanzeOrdinate.push(obj);
-        }
+        return (obj.quantita > 0);
       });
 
-      $state.go('app.ordiniGestioneSequenza', {
+      $state.go('app.asporto', {
+        tavoloReale: $scope.data.tavoloReale,
         tavolo: $scope.data.tavolo,
         pietanzeOrdinate: pietanzeOrdinate,
-        numSequenzaSelezionato : $scope.data.numSequenzaSelezionato,
-        sequenze : $scope.data.sequenze
+        nomeAsporto: $scope.data.nomeAsporto
       },
       {reload: true});
     };

@@ -67,6 +67,16 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               }
           }
         })
+        .state('app.configura', {
+          url: "/configura",
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/configura.html",
+                  controller: 'ConfiguraController'
+              }
+          }
+        })
 		    .state('app.accompagnatore', {
           url: "/accompagnatore",
           params: {
@@ -92,20 +102,6 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               viewContent: {
                   templateUrl: "templates/accompagnatore-tavolo.html",
                   controller: 'AccompagnatoreTavoloController'
-              }
-          }
-        })
-		    .state('app.cassa', {
-          url: "/cassa",
-          params: {
-              color: null,
-              icon: null
-          },
-          cache: false,
-          views: {
-              viewContent: {
-                  templateUrl: "templates/cassa.html",
-                  controller: 'ItemController'
               }
           }
         })
@@ -153,17 +149,147 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
                 }
             }
         })
-		    .state('app.cucina', {
-            url: "/cucina",
-            params: {
-                color: null,
-                icon: null
+        .state('app.ordiniInviato', {
+            url: "/ordini/inviato",
+			      params: {
+              tavolo: null,
+              ordine: null
             },
             cache: false,
             views: {
                 viewContent: {
-                    templateUrl: "templates/cucina.html",
-                    controller: 'ItemController'
+                    templateUrl: "templates/ordini-inviato.html",
+                    controller: 'OrdiniInviatoController'
+                }
+            }
+        })
+        .state('app.asporto', {
+          url: "/asporto",
+          params: {
+            tavolo: null,
+            pietanzeOrdinate: null,
+            nomeAsporto: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/asporto.html",
+                  controller: 'AsportoController'
+              }
+          }
+        })
+        .state('app.asportoSceltaPietanza', {
+          url: "/asporto/pietanza",
+          params: {
+             data: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/asporto-scelta-pietanza.html",
+                  controller: 'AsportoSceltaPietanzaController'
+              }
+          }
+        })
+        .state('app.asportoInviato', {
+            url: "/asporto/inviato",
+			      params: {
+              tavolo: null,
+              ordine: null
+            },
+            cache: false,
+            views: {
+                viewContent: {
+                    templateUrl: "templates/asporto-inviato.html",
+                    controller: 'AsportoInviatoController'
+                }
+            }
+        })
+        .state('app.contatori', {
+          url: "/contatori",
+          params: {
+            color: null,
+            icon: null,
+            title: null,
+            pietanzeContatori: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/contatori.html",
+                  controller: 'ContatoriController'
+              }
+          }
+        })
+        .state('app.contatoriSceltaPietanza', {
+          url: "/contatori/pietanza",
+          params: {
+            data: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/contatori-scelta-pietanza.html",
+                  controller: 'ContatoriSceltaPietanzaController'
+              }
+          }
+        })
+		    .state('app.serate', {
+          url: "/serate",
+          params: {
+              color: null,
+              icon: null,
+              title: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                  templateUrl: "templates/serate.html",
+                  controller: 'SerateController'
+              }
+          }
+        })
+        .state('app.modificaOrdineSceltaTavolo', {
+          url: "/modifica-ordine",
+          params: {
+              color: null,
+              icon: null,
+              title: null
+          },
+          cache: false,
+          views: {
+              viewContent: {
+                templateUrl: "templates/modifica-ordine-scelta-tavolo.html",
+                controller: 'ModificaOrdineSceltaTavoloController'
+              }
+            }
+        })
+		    .state('app.modificaOrdineGestioneSequenza', {
+            url: "/modifica-ordine/sequenza",
+			      params: {
+                tavolo: null,
+                pietanzeOrdinate: null,
+                numSequenza: null,
+                sequenze: null
+            },
+            cache: false,
+            views: {
+                viewContent: {
+                    templateUrl: "templates/modifica-ordine-gestione-sequenza.html",
+                    controller: 'ModificaOrdineSequenzaController'
+                }
+            }
+        })
+		    .state('app.modificaOrdineSceltaPietanza', {
+            url: "/modifica-ordine/pietanza",
+			      params: {
+                data: null,
+            },
+            cache: false,
+            views: {
+                viewContent: {
+                    templateUrl: "templates/modifica-ordine-scelta-pietanza.html",
+                    controller: 'ModificaOrdinePietanzaController'
                 }
             }
         });

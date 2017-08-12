@@ -1,0 +1,35 @@
+<ion-view class="itemView" view-title="{{data.tavolo.descrizione}}" >
+    <ion-content>
+        <div ng-repeat="seq in data.sequenze">
+          <div class="item item-divider item-button-right sequenza-title">
+            <span>
+              <i class="icon ion-android-delete" ng-click="rimuoviSequenza({{seq}})" style="font-size:2em; vertical-align:middle; cursor: pointer"></i>  SEQ. {{seq}}
+            </span>
+            <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
+            ng-click="modificaPietanzeSequenza({{seq}})">Menù</button>
+          </div>
+          <ion-list can-swipe="true" >
+              <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate | filter: { numSequenza: seq }">
+                  {{pietanzaOrdinata.nome}}
+                  <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
+              </a>
+          </ion-list>
+        </div>
+
+        <div class="row">
+            <span align="right" class="col col-100">
+                <span>Totale: {{totale  | number:2}}€</span>
+            </span>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>
+          </div>
+        </div>
+        <div class="item item-divider sequenza-aggiungi">
+          <a ng-click="aggiungiSequenza()" style="cursor: pointer">
+            Aggiungi una sequenza
+          </a>
+        </div>
+    </ion-content>
+</ion-view>

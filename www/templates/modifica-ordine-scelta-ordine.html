@@ -1,0 +1,20 @@
+<ion-view class="itemView" view-title="{{tavolo.descrizione}} - Selezione ordine" >
+    <ion-content overflow-scroll="true">
+        <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
+          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaOrdine(ordine)" ng-repeat="ordine in ordiniTavolo">
+            <div class="row">
+              <div class="col">
+                <span>{{ordine.data | date : 'dd/MM/yyyy HH:mm'}}</span>
+              </div>
+              <div class="col">
+                <span>Coperti: {{ordine.numCoperti}}</span>
+              </div>
+              <div class="col">
+                <span>{{ordine.personaOrdine}}</span>
+              </div>
+            </div>
+            <i class="icon ion-chevron-right" ></i>
+          </a>
+        </ion-list>
+  </ion-content>
+</ion-view>

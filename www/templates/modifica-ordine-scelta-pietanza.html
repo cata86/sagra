@@ -1,6 +1,6 @@
 <ion-view class="itemView" view-title="Aggiungi alla sequenza {{data.numSequenzaSelezionato}}" >
   <ion-content>
-    <ion-list can-swipe="true" class="list-pietanze">
+    <ion-list can-swipe="true" class="list-sagra">
       <div class="item item-button-right" ng-repeat="pietanza in pietanze | filter: { categoria: { id: categoriaSelezionata } }">
         <span class="nome-pietanza">{{pietanza.nome}}</span>
         <div class="buttons">

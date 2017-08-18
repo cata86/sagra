@@ -46,6 +46,12 @@
           icon: "ion-ios-compose",
           title: "Modifica ordine",
           view: "modifica-ordine"
+      },
+      {
+          color: "#cc0099",
+          icon: "ion-ios-compose",
+          title: "Stato tavolo",
+          view: "cambia-stato-tavolo"
       }
     ];
 

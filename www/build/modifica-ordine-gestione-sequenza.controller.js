@@ -10,11 +10,12 @@
 
       $scope.data = {
         tavolo: $stateParams.tavolo,
-        pietanzeOrdinate: $stateParams.pietanzeOrdinate ? lodash.sortBy(
-          $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
+        ordine: $stateParams.ordine ? $stateParams.ordine : null,
+        pietanzeOrdinate: $stateParams.ordine.pietanzeOrdinate ? lodash.sortBy(
+          $stateParams.ordine.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
-        sequenze: $stateParams.sequenze ? $stateParams.sequenze : [1]
+        sequenze: $stateParams.ordine.sequenze ? $stateParams.ordine.sequenze : [1]
       };
 
       $scope.totale = 0;
@@ -71,7 +72,7 @@
 
       $scope.modificaPietanzeSequenza = function(numSequenza){
         $scope.data.numSequenzaSelezionato = numSequenza;
-        $state.go('app.ordiniSceltaPietanza', {data: $scope.data});
+        $state.go('app.modificaOrdineSceltaPietanza', {data: $scope.data});
       }
 
       $scope.inviaOrdine = function(){
@@ -104,7 +105,7 @@
                 pietanzeOrdinate: pietanzeOrdine
               }
             ).then(function(response){
-               $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+               $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
             });
           }
         });
@@ -121,11 +122,11 @@
 
           confirmPopup.then(function(res) {
             if(res) {
-                $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+                $state.go('app.modifica-ordine', { title: 'Ordini', icon: null, color: null }, {reload: true});
             }
           });
         } else
-          $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+          $state.go('app.modifica-ordine', { title: 'Ordini', icon: null, color: null }, {reload: true});
       };
 
       // override soft back

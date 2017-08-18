@@ -1,18 +1,23 @@
 <ion-view class="itemView" view-title="{{item.title}}" >
     <ion-content overflow-scroll="true">
-        <div class="button-bar">
-            <a class="{{btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setInAttesa()" >In Attesa</a>
-            <a class="{{!btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
-        </div>
-        <ion-list can-swipe="true" class="list-ordini-scelta-tavolo">
-          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaSerata(serata)" ng-repeat="serata in serate">
-            <!--<i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{serata.stato}}"></i>-->
+      <div class="item item-divider">
+        <button class="button button-positive" ng-click="nuovaSerata()">Nuova serata</button>
+      </div>
+
+        <ion-list can-swipe="true" class="list-sagra">
+          <a class="item item-icon-left item-icon-right"  ng-click="" ng-repeat="serata in serate">
             <div class="row">
               <div class="col">
                 <span>{{serata.descrizione}}</span>
               </div>
               <div class="col">
-                <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>
+                <span>{{serata.data | date : 'dd/MM/yyyy'}}</span>
+              </div>
+              <div class="col">
+                <span>{{serata.data | date : 'dd/MM/yyyy'}}</span>
+              </div>
+              <div class="col">
+                <button class="button button-assertive" ng-click="modificaSerata(serata)">Modifica</button>
               </div>
             </div>
             <i class="icon ion-chevron-right" ></i>

@@ -1,15 +1,11 @@
 <ion-view class="itemView" view-title="{{item.title}} - Selezione tavolo" >
     <ion-content overflow-scroll="true">
 
-        <div class="button-bar">
-            <a class="{{btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setInAttesa()" >In Attesa</a>
-            <a class="{{!btnSelectedInAttesa ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
-        </div>
         <div class="bar bar-header item-input-inset" >
           <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
         <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
-          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter: (search.codice)  && search ">
+          <a class="item item-icon-left item-icon-right"  ng-click="cambiaStato(tavolo)" ng-repeat="tavolo in tavoliAccomodati| filter: (search.codice)  && search ">
             <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavolo.stato}}"></i>
             <div class="row">
               <div class="col">
@@ -18,8 +14,12 @@
               <div class="col">
                 <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>
               </div>
+              <!--<div class="button-bar">
+              <div class="col" ng-repeat="statoTavolo in statiTavolo">
+                <button class="button btn-cambia-stato" style="border-color:{{statoTavolo.colore}}" ng-click="cambiaStato(statoTavolo)"></i>{{statoTavolo.stato}}</button>
+              </div>
+                </div>-->
             </div>
-            <i class="icon ion-chevron-right" ></i>
           </a>
         </ion-list>
 

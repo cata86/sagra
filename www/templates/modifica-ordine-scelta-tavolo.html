@@ -1,6 +1,29 @@
-<ion-view class="itemView" view-title="{{item.title}}" ng-style="{ 'background-color': item.color }">
-    <ion-content class="center-content animated slideInUp">
-        <i class="icon {{item.icon}}" style="font-size:22em;color:white"></i>
-        modifica ordine
-</ion-content>
+<ion-view class="itemView" view-title="{{item.title}} - Selezione tavolo" >
+    <ion-content overflow-scroll="true">
+
+        <div class="button-bar">
+            <a class="{{!btnSelectedAsporto ? 'button button-positive' : 'button button-outline button-positive'}}"  ng-click="setTutti()" >Tutti</a>
+            <a class="{{btnSelectedAsporto ? 'button button-positive' : 'button button-outline button-positive'}}" ng-click="setAsporto()" >Asporto</a>
+        </div>
+        <div ng-show="!btnSelectedAsporto" class="bar bar-header item-input-inset" >
+          <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
+        </div>
+        <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
+          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter: { asporto: btnSelectedAsporto } | filter: (search.codice)  && search ">
+            <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavoloAccomodato.stato}}"></i>
+            <div class="row">
+              <div class="col">
+                <span ng-if="!tavolo.asporto">{{tavolo.descrizione}}</span>
+                <span ng-if="tavolo.asporto">Asporto - {{tavolo.nomeAsporto}}</span>
+              </div>
+              <div class="col">
+                <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>
+              </div>
+            </div>
+            <i class="icon ion-chevron-right" ></i>
+          </a>
+        </ion-list>
+
+
+  </ion-content>
 </ion-view>

@@ -3,27 +3,24 @@ span {
   font-size: 18px;
 }
 
-
-
-/********************* accompagnatore.html e accompagnatore-tavolo.html ***********************/
-
-.list-accompagnatore .item {
+.list-sagra .item {
   font-size: 18px;
 }
 
-.list-accompagnatore .item .icon {
+.list-sagra .item .icon {
   font-size: 20px;
 }
+
+/********************* contatori-scelta-pietanza.html ***********************/
+
+.list-contatori div label{
+  padding: 2px;
+  padding-left: 60px;
+  border-style: none;
+}
+
 
 /********************* ordini-scelta-tavolo.html ***********************/
-
-.list-ordini-scelta-tavolo .item {
-  font-size: 18px;
-}
-
-.list-ordini-scelta-tavolo .item .icon {
-  font-size: 20px;
-}
 
 .list-ordini-scelta-tavolo .orario{
   font-size: 14px;
@@ -61,11 +58,7 @@ span {
 
 /********************* ordini-scelta-pietanza.html ***********************/
 
-.list-pietanze .item {
-  font-size: 18px;
-}
-
-.list-pietanze .nome-pietanza {
+.nome-pietanza {
   white-space: normal;
   max-width: 150px;
 }
@@ -82,3 +75,8 @@ span {
   margin-right: 5px;
 }
 
+
+.btn-cambia-stato {
+  font-size:12px;
+  border-width: 2px
+}

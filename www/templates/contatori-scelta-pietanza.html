@@ -1,7 +1,7 @@
 <ion-view class="itemView" view-title="{{item.title}}" >
   <ion-content>
-    <ion-list can-swipe="true" class="list-pietanze">
-      <div class="item item-button-right" ng-repeat="pietanza in pietanze | filter: { categoria: { id: categoriaSelezionata } }">
+    <ion-list can-swipe="true" class="list-contatori">
+      <div class="item item-button-right" style="border-style: solid" ng-repeat="pietanza in pietanze | filter: { categoria: { id: categoriaSelezionata } }">
         <ion-checkbox ng-model="pietanza.checked" ng-checked="pietanza.checked">{{pietanza.nome}}</ion-checkbox>
         <!--<span class="nome-pietanza">{{pietanza.nome}}</span>-->
       </div>

@@ -249,7 +249,23 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               }
           }
         })
-        .state('app.modificaOrdineSceltaTavolo', {
+        .state('app.serate-crea-modifica', {
+          url: "/serate/crea",
+          cache: false,
+          params: {
+              color: null,
+              icon: null,
+              title: null,
+              serata: null
+          },
+          views: {
+              viewContent: {
+                  templateUrl: "templates/serate-crea-modifica.html",
+                  controller: 'SerateCreaModificaController'
+              }
+          }
+        })
+        .state('app.modifica-ordine', {
           url: "/modifica-ordine",
           params: {
               color: null,
@@ -264,10 +280,24 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               }
             }
         })
+        .state('app.modificaOrdineSceltaOrdine', {
+            url: "/modifica-ordine/ordine",
+			      params: {
+                tavolo: null
+            },
+            cache: false,
+            views: {
+                viewContent: {
+                    templateUrl: "templates/modifica-ordine-scelta-ordine.html",
+                    controller: 'ModificaOrdineSceltaOrdineController'
+                }
+            }
+        })
 		    .state('app.modificaOrdineGestioneSequenza', {
             url: "/modifica-ordine/sequenza",
 			      params: {
                 tavolo: null,
+                ordine: null,
                 pietanzeOrdinate: null,
                 numSequenza: null,
                 sequenze: null
@@ -276,7 +306,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
             views: {
                 viewContent: {
                     templateUrl: "templates/modifica-ordine-gestione-sequenza.html",
-                    controller: 'ModificaOrdineSequenzaController'
+                    controller: 'ModificaOrdineGestioneSequenzaController'
                 }
             }
         })
@@ -289,7 +319,22 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
             views: {
                 viewContent: {
                     templateUrl: "templates/modifica-ordine-scelta-pietanza.html",
-                    controller: 'ModificaOrdinePietanzaController'
+                    controller: 'ModificaOrdineSceltaPietanzaController'
+                }
+            }
+        })
+        .state('app.cambia-stato-tavolo', {
+            url: "/cambia-stato-tavolo",
+            cache: false,
+            params: {
+              color: null,
+              icon: null,
+              title: null
+            },
+            views: {
+                viewContent: {
+                    templateUrl: "templates/cambia-stato-tavolo.html",
+                    controller: 'CambiaStatoTavoloController'
                 }
             }
         });

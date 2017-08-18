@@ -1,4 +1,4 @@
-<ion-view class="itemView" view-title="Ordine inviato - Tavolo {{tavolo.descrizione}}" >
+<ion-view class="itemView" view-title="Ordine inviato - {{tavolo.descrizione}}" >
     <ion-content>
       <div>
         <div class="row">
@@ -11,8 +11,8 @@
                 <span>A persona: {{quotaPersona  | number:2}}€</span>
             </span>
         </div>
-        <div class="row">
-          <button style="padding-top: 10px" class="button button-positive button-block button-light animated bounceInUp" ng-click="nuovoOrdine()">Torna ai tavoli</button>
+        <div class="row" style="padding-top: 10px">
+          <button  class="button button-positive button-block button-light animated bounceInUp" ng-click="nuovoOrdine()">Torna ai tavoli</button>
         </div>
     </ion-content>
 </ion-view>

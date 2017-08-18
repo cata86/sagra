@@ -15,7 +15,7 @@
       };
 
       $scope.data = {
-        pietanzeContatori: $stateParams.data.pietanzeContatori
+        pietanzeContatori: $stateParams.data ? $stateParams.data.pietanzeContatori : []
       }
 
       $scope.idSagra = 1; //TODO

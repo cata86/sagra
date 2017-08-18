@@ -5,13 +5,9 @@
         .module('App')
         .controller('SerateController', SerateController);
 
-    SerateController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory'];
-    function SerateController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory) {
+    SerateController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory', 'Cassa', 'lodash'];
+    function SerateController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Cassa, lodash) {
 
-//apri serata
-//chiudi serata
-//riapri serata
-//stampa scontrino
        $scope.item = {
         title: $stateParams.title,
         icon: $stateParams.icon,
@@ -20,18 +16,23 @@
 
       $scope.idSagra = 1;
 
-      $scope.serate = [];
-      $scope.caricaSerate = function( ){
-        Ordinatore.getListaSerate({idSagra: $scope.idSagra}).then(function(response){
-          $scope.serate = lodash.sortBy(
-            response.data, ['data']
-          );
-        });
-      };
-      $scope.caricaSerate();
+      $scope.data = {};
+      Cassa.getListaSerate({idSagra: $scope.idSagra}).then(function(response){
+        $scope.data.serate = lodash.sortBy(
+          response.data, ['data']
+        );
+      });
+
+      $scope.nuovaSerata = function(){
+        $state.go('app.serate-crea-modifica', { title: 'Nuova serata' });
+      }
+
+      $scope.modificaSerata = function(serata){
+        $state.go('app.serate-crea-modifica', { title: 'Modifica serata', serata: serata });
+      }
 
 
-      if (!$scope.item.color) {
+      if (!$scope.item.title) {
         $ionicViewSwitcher.nextDirection('back');
         $ionicHistory.nextViewOptions({
             disableBack: true,

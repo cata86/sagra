@@ -77,8 +77,9 @@
         }
       });
 
-      $state.go('app.ordiniGestioneSequenza', {
+      $state.go('app.modificaOrdineGestioneSequenza', {
         tavolo: $scope.data.tavolo,
+        ordine: $scope.data.ordine,
         pietanzeOrdinate: pietanzeOrdinate,
         numSequenzaSelezionato : $scope.data.numSequenzaSelezionato,
         sequenze : $scope.data.sequenze

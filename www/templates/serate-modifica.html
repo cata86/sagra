@@ -1,0 +1,31 @@
+<ion-view class="itemView" view-title="{{item.title}}" >
+    <ion-content overflow-scroll="true">
+
+        <form name="modificaSerataForm">
+          <div class="list" >
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Codice</span>
+                <input type="text" ng-model="data.serata.codice" placeholder="Codice">
+              </label>
+
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Descrizione</span>
+                <input type="text" ng-model="data.serata.descrizione" placeholder="Descrizione">
+              </label>
+
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Data</span>
+                <input type="date" data-date-format="dd/mm/yyyy"  required ng-model="data.serata.data" placeholder="Data">
+              </label>
+          </div>
+          <div>
+            <button class="button btn-cambia-stato" ng-click="apriSerata()"></i>APRI</button>
+            <button class="button btn-cambia-stato" ng-click="chiudiSerata(statoTavolo)"></i>CHIUDI</button>
+          </div>
+          <button ng-disabled="modificaSerataForm.$invalid" class="button button-positive button-block button-light animated bounceInUp" ng-click="modificaSerata()">Salva</button>
+        </form>
+
+
+  </ion-content>
+</ion-view>
+

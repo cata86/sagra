@@ -249,8 +249,23 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
               }
           }
         })
-        .state('app.serate-crea-modifica', {
+        .state('app.serate-crea', {
           url: "/serate/crea",
+          cache: false,
+          params: {
+              color: null,
+              icon: null,
+              title: null
+          },
+          views: {
+              viewContent: {
+                  templateUrl: "templates/serate-crea.html",
+                  controller: 'SerateCreaController'
+              }
+          }
+        })
+        .state('app.serate-modifica', {
+          url: "/serate/modifica",
           cache: false,
           params: {
               color: null,
@@ -260,8 +275,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
           },
           views: {
               viewContent: {
-                  templateUrl: "templates/serate-crea-modifica.html",
-                  controller: 'SerateCreaModificaController'
+                  templateUrl: "templates/serate-modifica.html",
+                  controller: 'SerateModificaController'
               }
           }
         })

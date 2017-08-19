@@ -47,7 +47,6 @@ StatoTavoloModificaController.$inject = ['$scope', '$rootScope', '$ionicPlatform
     }
 
     $scope.modificaStatoTavolo = function(){
-      // $scope.statoTavoloSelected = statoTavolo;
     }
 
 

@@ -24,9 +24,7 @@
       });
 
       $scope.stampaChiusuraSerata = function(serata){
-         Cassa.stampaSerata(
-          serata.id
-        ).then(function(response){
+         Cassa.stampaSerata({idSerata: serata.id}).then(function(response){
           $state.go('app.serate', { title: 'Serate' }, {reload: true});
         });
       };

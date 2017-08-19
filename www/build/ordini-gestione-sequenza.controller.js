@@ -80,7 +80,7 @@
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
           var pietanzaOrdinata = {
             note: "",
-            numSequenza: value.numSequenzaSelezionato,
+            numSequenza: value.numSequenza,
             pietanza: {
               id: value.id
             },

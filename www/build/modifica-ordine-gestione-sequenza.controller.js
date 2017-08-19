@@ -11,12 +11,35 @@
       $scope.data = {
         tavolo: $stateParams.tavolo,
         ordine: $stateParams.ordine ? $stateParams.ordine : null,
-        pietanzeOrdinate: $stateParams.ordine.pietanzeOrdinate ? lodash.sortBy(
-          $stateParams.ordine.pietanzeOrdinate, ['categoria.codice', 'nome']
+        pietanzeOrdinate: $stateParams.pietanzeOrdinate ? lodash.sortBy(
+          $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
         sequenze: $stateParams.ordine.sequenze ? $stateParams.ordine.sequenze : [1]
       };
+
+      if(!$stateParams.pietanzeOrdinate){
+        lodash.forEach(lodash.sortBy($stateParams.ordine.pietanzeOrdinate, ['categoria.codice', 'nome']), function(value) {
+          var pietanza = {
+            categoria: value.pietanza.categoria,
+            contatore: value.pietanza.contatore,
+            coperto: value.pietanza.coperto,
+            descrizione: value.pietanza.descrizione,
+            id: value.pietanza.id,
+            nome: value.pietanza.nome,
+            numSequenza: value.numSequenza,
+            prezzo: value.pietanza.prezzo,
+            quantita: value.quantita
+          }
+          $scope.data.pietanzeOrdinate.push(pietanza);
+        });
+      }
+
+
+      lodash.sortBy(
+        $scope.data.pietanzeOrdinate, ['categoria.codice', 'nome']
+      );
+
 
       $scope.totale = 0;
       lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
@@ -75,7 +98,7 @@
         $state.go('app.modificaOrdineSceltaPietanza', {data: $scope.data});
       }
 
-      $scope.inviaOrdine = function(){
+      $scope.modificaOrdine = function(){
         var pietanzeOrdine = [];
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
           var pietanzaOrdinata = {
@@ -90,14 +113,15 @@
         });
 
         var confirmPopup = $ionicPopup.confirm({
-          title: 'Invio ordine',
-          template: 'Procedere con l\'invio dell\'ordine?'
+          title: 'Modificare l\'ordine',
+          template: 'Procedere con la modifica dell\'ordine?'
         });
 
         confirmPopup.then(function(res) {
           if(res) {
-            Ordinatore.creaOrdine(
+            Ordinatore.modificaOrdine(
               {
+                id: $scope.data.ordine.id,
                 asporto: $scope.data.tavolo.asporto,
                 idTavoloAccomodato: $scope.data.tavolo.id,
                 numCoperti: $scope.data.tavolo.numCoperti,

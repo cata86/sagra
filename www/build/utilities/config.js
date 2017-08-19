@@ -1,7 +1,7 @@
 (function() {
   var config = {
     operatore: null,
-    apiHost: 'http://localhost:8080',
+    apiHost: 'http://192.168.1.9:8080',
     passwordConfigurazione: 'sagra'
   };
 

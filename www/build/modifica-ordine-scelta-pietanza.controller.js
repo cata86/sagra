@@ -34,7 +34,7 @@
         lodash.forEach($scope.pietanze, function(value, key) {
           var pietanzaOrdinata;
           if($scope.data){
-            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, {id:value.id, numSequenza: $scope.data.numSequenzaSelezionato});
+            pietanzaOrdinata = lodash.find($scope.data.pietanzeOrdinate, { id:value.id, numSequenza: $scope.data.numSequenzaSelezionato});
           }
           value.quantita = 0;
           if(pietanzaOrdinata && pietanzaOrdinata.numSequenza === $scope.data.numSequenzaSelezionato){

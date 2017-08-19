@@ -10,7 +10,7 @@
           </div>
           <ion-list can-swipe="true" >
               <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate | filter: { numSequenza: seq }">
-                  {{pietanzaOrdinata.pietanza.nome}}
+                  {{pietanzaOrdinata.nome}}
                   <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
               </a>
           </ion-list>
@@ -23,7 +23,8 @@
         </div>
         <div class="row responsive-sm">
           <div class="col text-right">
-            <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine()">Invia</button>
+            <button class="button icon-left ion-paper-airplane button-positive" ng-click="modificaOrdine()">Modifica</button>
+            <button class="button icon-left ion-printer button-positive" ng-click="modificaStampaOrdine()">Modifica e Stampa</button>
           </div>
         </div>
         <div class="item item-divider sequenza-aggiungi">

@@ -100,15 +100,19 @@
 
       $scope.modificaOrdine = function(){
         var pietanzeOrdine = [];
+        var numeroCopertiPietanza = 0;
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
           var pietanzaOrdinata = {
             note: "",
-            numSequenza: value.numSequenzaSelezionato,
+            numSequenza: value.numSequenza,
             pietanza: {
               id: value.id
             },
-            quantita: value.quantita
+            quantita: value.quantita,
+            coperto: value.coperto
           };
+          if(pietanzaOrdinata.coperto)
+            numeroCopertiPietanza = pietanzaOrdinata.quantita;
           pietanzeOrdine.push(pietanzaOrdinata);
         });
 
@@ -124,10 +128,27 @@
                 id: $scope.data.ordine.id,
                 asporto: $scope.data.tavolo.asporto,
                 idTavoloAccomodato: $scope.data.tavolo.id,
-                numCoperti: $scope.data.tavolo.numCoperti,
+                numCoperti: numeroCopertiPietanza,
                 personaOrdine: config.operatore,
                 pietanzeOrdinate: pietanzeOrdine
               }
+            ).then(function(response){
+               $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
+            });
+          }
+        });
+      }
+
+
+      $scope.eliminaOrdine = function(){
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Elimina l\'ordine',
+          template: 'Procedere con l\'eliminazione dell\'ordine?'
+        });
+
+        confirmPopup.then(function(res) {
+          if(res) {
+            Ordinatore.eliminaOrdine({idOrdine:$scope.data.ordine.id}
             ).then(function(response){
                $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
             });

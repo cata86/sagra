@@ -7,7 +7,7 @@
 //finire serate stampa chiusura
 //finire modifica ordine con ristampa scontrini
 
-
+//cambia operatore
 
 /******************************************* ANDREA ******************************************/
 

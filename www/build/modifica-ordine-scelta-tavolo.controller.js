@@ -25,8 +25,8 @@ ModificaOrdineSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ioni
 
     $scope.caricaTavoliAccomodati = function( ){
       Ordinatore.getListaTavoliAccomodati({statoOrdinato: true, asporto: true}).then(function(response){
-        $scope.tavoliAccomodati = lodash.sortBy(
-          response.data, ['accomodatoOrario', 'codice']
+        $scope.tavoliAccomodati = lodash.orderBy(
+          response.data, ['accomodatoOrario', 'codice'], ['desc', 'asc']
         );
       });
     };

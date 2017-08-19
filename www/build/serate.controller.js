@@ -18,8 +18,8 @@
 
       $scope.data = {};
       Cassa.getListaSerate({idSagra: $scope.idSagra}).then(function(response){
-        $scope.data.serate = lodash.sortBy(
-          response.data, ['data']
+        $scope.data.serate = lodash.orderBy(
+          response.data, ['data'], ['desc']
         );
       });
 

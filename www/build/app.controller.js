@@ -48,8 +48,8 @@
           view: "modifica-ordine"
       },
       {
-          color: "#cc0099",
-          icon: "ion-ios-compose",
+          color: "#e86836",
+          icon: "ion-cube",
           title: "Stato tavolo",
           view: "stato-tavolo"
       }

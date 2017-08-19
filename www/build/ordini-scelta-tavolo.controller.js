@@ -27,14 +27,14 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwi
     $scope.tavoliAccomodatiInAttesa = [];
     $scope.caricaTavoliAccomodati = function( ){
       Ordinatore.getListaTavoliAccomodati({statoOrdinato: true, asporto: false}).then(function(response){
-        $scope.tavoliAccomodatiTutti = lodash.sortBy(
-          response.data, ['accomodatoOrario', 'codice']
+        $scope.tavoliAccomodatiTutti = lodash.orderBy(
+          response.data, ['codice'], ['asc']
         );
-        $scope.tavoliAccomodatiInAttesa = lodash.sortBy(
+        $scope.tavoliAccomodatiInAttesa = lodash.orderBy(
           lodash.filter(response.data, function(tav){
             return tav.stato !== Constants.statoTavolo.ordinato.stato;
           }),
-          ['accomodatoOrario', 'codice']
+          ['accomodatoOrario', 'codice'], ['desc', 'asc']
         );
         $scope.tavoliAccomodati = $scope.tavoliAccomodatiInAttesa;
       });

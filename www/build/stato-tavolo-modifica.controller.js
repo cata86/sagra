@@ -4,8 +4,8 @@
     .module('App')
     .controller('StatoTavoloModificaController', StatoTavoloModificaController);
 
-StatoTavoloModificaController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
-  function StatoTavoloModificaController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
+StatoTavoloModificaController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
+  function StatoTavoloModificaController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
 
     $scope.item = {
         title: $stateParams.title,
@@ -50,6 +50,32 @@ StatoTavoloModificaController.$inject = ['$scope', '$stateParams', '$ionicViewSw
       // $scope.statoTavoloSelected = statoTavolo;
     }
 
+
+    // run this function when either hard or soft back button is pressed
+      var doCustomBack = function() {
+         $state.go('app.stato-tavolo', { title: 'Stato tavolo' }, {reload: true});
+      };
+
+      // override soft back
+      // framework calls $rootScope.$ionicGoBack when soft back button is pressed
+      var oldSoftBack = $rootScope.$ionicGoBack;
+      $rootScope.$ionicGoBack = function() {
+          doCustomBack();
+      };
+      var deregisterSoftBack = function() {
+          $rootScope.$ionicGoBack = oldSoftBack;
+      };
+
+      // override hard back
+      // registerBackButtonAction() returns a function which can be used to deregister it
+      var deregisterHardBack = $ionicPlatform.registerBackButtonAction(
+          doCustomBack, 101
+      );
+
+      // cancel custom back behaviour
+      $scope.$on('$destroy', function() {
+          deregisterHardBack();
+      });
 
 
 

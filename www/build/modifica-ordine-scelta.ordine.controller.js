@@ -21,5 +21,34 @@
       }
 
 
+
+      // run this function when either hard or soft back button is pressed
+      var doCustomBack = function() {
+          $state.go('app.modifica-ordine', { title: 'Modifica ordine' }, {reload: true});
+      };
+
+      // override soft back
+      // framework calls $rootScope.$ionicGoBack when soft back button is pressed
+      var oldSoftBack = $rootScope.$ionicGoBack;
+      $rootScope.$ionicGoBack = function() {
+          doCustomBack();
+      };
+      var deregisterSoftBack = function() {
+          $rootScope.$ionicGoBack = oldSoftBack;
+      };
+
+      // override hard back
+      // registerBackButtonAction() returns a function which can be used to deregister it
+      var deregisterHardBack = $ionicPlatform.registerBackButtonAction(
+          doCustomBack, 101
+      );
+
+      // cancel custom back behaviour
+      $scope.$on('$destroy', function() {
+          deregisterHardBack();
+      });
+
+
+
     }
 })();

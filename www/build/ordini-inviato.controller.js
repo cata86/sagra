@@ -18,7 +18,7 @@
 
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
-          // $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+          $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
       };
 
       // override soft back

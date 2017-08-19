@@ -4,8 +4,8 @@
     .module('App')
     .controller('ModificaOrdineSceltaTavoloController', ModificaOrdineSceltaTavoloController);
 
-ModificaOrdineSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
-  function ModificaOrdineSceltaTavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
+ModificaOrdineSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
+  function ModificaOrdineSceltaTavoloController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
 
     $scope.item = {
         title: $stateParams.title,
@@ -47,6 +47,33 @@ ModificaOrdineSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ioni
     $scope.visualizzaTavolo = function(tavolo){
       $state.go('app.modificaOrdineSceltaOrdine', { tavolo: tavolo });
     }
+
+    // run this function when either hard or soft back button is pressed
+    var doCustomBack = function() {
+        $state.go('app.gallery');
+    };
+
+    // override soft back
+    // framework calls $rootScope.$ionicGoBack when soft back button is pressed
+    var oldSoftBack = $rootScope.$ionicGoBack;
+    $rootScope.$ionicGoBack = function() {
+        doCustomBack();
+    };
+    var deregisterSoftBack = function() {
+        $rootScope.$ionicGoBack = oldSoftBack;
+    };
+
+    // override hard back
+    // registerBackButtonAction() returns a function which can be used to deregister it
+    var deregisterHardBack = $ionicPlatform.registerBackButtonAction(
+        doCustomBack, 101
+    );
+
+    // cancel custom back behaviour
+    $scope.$on('$destroy', function() {
+        deregisterHardBack();
+    });
+
 
     if (!$scope.item.title) {
         $ionicViewSwitcher.nextDirection('back');

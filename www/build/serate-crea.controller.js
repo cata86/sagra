@@ -5,8 +5,8 @@
         .module('App')
         .controller('SerateCreaController', SerateCreaController);
 
-    SerateCreaController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory', 'Cassa', 'config'];
-    function SerateCreaController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Cassa, config) {
+    SerateCreaController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory', 'Cassa', 'config'];
+    function SerateCreaController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Cassa, config) {
 
       $scope.item = {
         title: $stateParams.title,
@@ -34,6 +34,34 @@
           $state.go('app.serate', { title: 'Serate' }, {reload: true});
         });
       };
+
+
+
+      // run this function when either hard or soft back button is pressed
+      var doCustomBack = function() {
+         $state.go('app.serate', { title: 'Serate' }, {reload: true});
+      };
+
+      // override soft back
+      // framework calls $rootScope.$ionicGoBack when soft back button is pressed
+      var oldSoftBack = $rootScope.$ionicGoBack;
+      $rootScope.$ionicGoBack = function() {
+          doCustomBack();
+      };
+      var deregisterSoftBack = function() {
+          $rootScope.$ionicGoBack = oldSoftBack;
+      };
+
+      // override hard back
+      // registerBackButtonAction() returns a function which can be used to deregister it
+      var deregisterHardBack = $ionicPlatform.registerBackButtonAction(
+          doCustomBack, 101
+      );
+
+      // cancel custom back behaviour
+      $scope.$on('$destroy', function() {
+          deregisterHardBack();
+      });
 
 
 

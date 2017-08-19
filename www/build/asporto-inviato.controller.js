@@ -18,7 +18,7 @@
 
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
-        // $state.go('app.gallery');
+        $state.go('app.gallery');
       };
 
       // override soft back

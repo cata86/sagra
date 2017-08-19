@@ -4,20 +4,17 @@
         <button class="button button-positive" ng-click="nuovaSerata()">Nuova serata</button>
       </div>
 
-        <ion-list can-swipe="true" class="list-sagra">
-          <a class="item" ng-repeat="serata in data.serate">
-            <div class="row">
-              <div class="col">
-                <span>{{serata.descrizione}}</span>
-              </div>
-              <div class="col">
-                <span>{{serata.data | date : 'dd/MM/yyyy'}}</span>
-              </div>
-              <div class="col">
+        <ion-list can-swipe="true" class="list-sagra list-serate">
+          <div class="item" ng-repeat="serata in data.serate">
+            <div class="row row-center responsive-sm"  >
+              <div class="col  ">
                 <span>{{serata.data | date : 'dd/MM/yyyy'}}</span>
               </div>
               <div class="col">
                 <span>{{serata.stato}}</span>
+              </div>
+              <div class="col ">
+                <span>{{serata.stato === 'APERTA' ? serata.dataApertura : serata.dataChiusura | date : 'dd/MM/yyyy HH:mm:ss'}}</span>
               </div>
               <div class="col">
                 <button ng-if="serata.stato!=='CHIUSA'" class="button button-assertive" ng-click="chiudiSerata(serata)">Chiudi</button>
@@ -25,7 +22,7 @@
                 <button class="button button-positive" ng-click="modificaSerata(serata)">Modifica</button>
               </div>
             </div>
-          </a>
+          </div>
         </ion-list>
 
 

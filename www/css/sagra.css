@@ -19,6 +19,36 @@ span {
   border-style: none;
 }
 
+/********************* stato-tavolo-modifica.html ***********************/
+
+.list-stato-tavolo-modifica .item .row {
+  padding: 0px;
+}
+
+.list-stato-tavolo-modifica .item .row .col {
+  padding: 0px;
+}
+
+
+.list-stato-tavolo-modifica .item-content {
+  padding: 0px;
+}
+
+
+/********************* serate.html ***********************/
+
+.list-serate .item {
+  padding: 10px;
+  padding-left: 16px;
+}
+
+.list-serate .item .row {
+  padding: 0px;
+}
+
+.list-serate .item .row .col {
+  padding: 0px;
+}
 
 /********************* ordini-scelta-tavolo.html ***********************/
 

@@ -1,0 +1,39 @@
+<ion-view class="itemView" view-title="{{item.title}} - {{data.tavolo.descrizione}}" >
+    <ion-content overflow-scroll="true">
+
+          <ion-list radio-group  class="list-sagra list-stato-tavolo-modifica">
+            <ion-radio class="item  item-icon-right"
+                ng-repeat="statoTavolo in statiTavolo"
+                ng-model="statoTavoloSelected"
+                value="{{statoTavolo.stato}}"
+                ng-click="setStatoTavolo(statoTavolo.stato)"
+              >
+              <a style="border:none" class="item item-icon-left item-icon-right">
+                <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(statoTavolo.stato)}}" title="{{statoTavolo.stato}}"></i>
+                <div class="row responsive-sm">
+                  <div class="col ">
+                    {{statoTavolo.stato}}
+                  </div>
+                  <div class="col">
+                    <span class="orarioAccomodato">
+                    {{getOrarioStatoTavolo(data.tavolo, statoTavolo.stato) | date : 'dd/MM/yyyy HH:mm'}}
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span>
+                    {{getPersonaStatoTavolo(data.tavolo, statoTavolo.stato)}}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </ion-radio>
+        </ion-list>
+        <button class="button button-positive button-block button-light animated bounceInUp" ng-click="modificaStatoTavolo()">Salva</button>
+
+
+
+
+
+
+  </ion-content>
+</ion-view>

@@ -2,10 +2,10 @@
 'use strict';
   angular
     .module('App')
-    .controller('CambiaStatoTavoloController', CambiaStatoTavoloController);
+    .controller('StatoTavoloController', StatoTavoloController);
 
-CambiaStatoTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
-  function CambiaStatoTavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
+StatoTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
+  function StatoTavoloController($scope, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
 
     $scope.item = {
         title: $stateParams.title,
@@ -20,27 +20,18 @@ CambiaStatoTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwit
       return {"color": colore};
     }
 
-    $scope.statiTavolo = Constants.statoTavolo;
-    $scope.statoTavoloSelected = $scope.statiTavolo[0];
-
     $scope.tavoliAccomodati = [];
-
     $scope.caricaTavoliAccomodati = function( ){
       Ordinatore.getListaTavoliAccomodati({statoOrdinato: true, asporto: false}).then(function(response){
         $scope.tavoliAccomodati = lodash.orderBy(
-          response.data, ['accomodatoOrario', 'codice'], ['desc', 'asc']   //TODO
+          response.data, ['accomodatoOrario', 'codice'], ['desc', 'asc']
         );
       });
     };
     $scope.caricaTavoliAccomodati();
 
-    $scope.setStatoTavolo = function(statoTavolo){
-      $scope.statoTavoloSelected = statoTavolo;
-    }
-
-
-    $scope.cambiaStatoTavolo = function(tavolo){
-      $state.go('app.', { tavolo: tavolo });
+    $scope.modificaStatoTavolo = function(tavolo){
+      $state.go('app.stato-tavolo-modifica', { title: 'Modifica stato tavolo', tavolo: tavolo });
     }
 
 

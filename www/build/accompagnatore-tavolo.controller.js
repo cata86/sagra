@@ -29,6 +29,14 @@
       return {"color": colore};
     }
 
+     $scope.getOrarioStatoTavolo = function(tavoloAccomodato){
+      var statoTavoloAccomodato = tavoloAccomodato.stato;
+      var campoOrario = lodash.filter(Constants.statoTavolo, function(statoTavolo){
+          return statoTavolo.stato === statoTavoloAccomodato;
+      })[0].campoOrario;
+      return tavoloAccomodato[campoOrario];
+    }
+
     $scope.apriTavoloAccomodato = function(){
       Accompagnatore.apriTavoloAccomodato(
         $scope.tavoloRealeSelezionato.id,

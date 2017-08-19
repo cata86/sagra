@@ -54,7 +54,7 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$stateParams', '$ionicViewSwi
 
 
     $scope.visualizzaTavolo = function(tavolo){
-      if(tavolo.stato === Constants.statoTavolo.ordinato.stato){
+      if(tavolo.stato === Constants.statoTavolo.in_ordinazione.stato){
         var confirmPopup = $ionicPopup.confirm({
           title: 'Tavolo non prenotabile',
           template: 'Il tavolo è servito da un altro operatore, proseguire?'

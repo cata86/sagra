@@ -338,8 +338,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
                 }
             }
         })
-        .state('app.cambia-stato-tavolo', {
-            url: "/cambia-stato-tavolo",
+        .state('app.stato-tavolo', {
+            url: "/stato-tavolo",
             cache: false,
             params: {
               color: null,
@@ -348,11 +348,26 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
             },
             views: {
                 viewContent: {
-                    templateUrl: "templates/cambia-stato-tavolo.html",
-                    controller: 'CambiaStatoTavoloController'
+                    templateUrl: "templates/stato-tavolo.html",
+                    controller: 'StatoTavoloController'
                 }
             }
-        });
+          }).state('app.stato-tavolo-modifica', {
+            url: "/stato-tavolo-modifica",
+            cache: false,
+            params: {
+              color: null,
+              icon: null,
+              title: null,
+              tavolo: null
+            },
+            views: {
+                viewContent: {
+                    templateUrl: "templates/stato-tavolo-modifica.html",
+                    controller: 'StatoTavoloModificaController'
+                }
+            }
+          });
 
         $urlRouterProvider.otherwise(function ($injector, $location) {
             var $state = $injector.get("$state");

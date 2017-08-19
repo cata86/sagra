@@ -5,21 +5,19 @@
           <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
         <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
-          <a class="item item-icon-left item-icon-right"  ng-click="cambiaStato(tavolo)" ng-repeat="tavolo in tavoliAccomodati| filter: (search.codice)  && search ">
+          <a class="item item-icon-left item-icon-right"  ng-click="modificaStatoTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati| filter: (search.codice)  && search ">
             <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavolo.stato}}"></i>
             <div class="row">
               <div class="col">
-                <span>{{tavolo.descrizione}}</span>
+                <span>{{tavolo.descrizione}} </span>
               </div>
               <div class="col">
-                <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>
+                <span class="orarioAccomodato">
+                {{tavolo.accomodatoOrario | date : 'dd/MM/yyyy HH:mm'}}
+                </span>
               </div>
-              <!--<div class="button-bar">
-              <div class="col" ng-repeat="statoTavolo in statiTavolo">
-                <button class="button btn-cambia-stato" style="border-color:{{statoTavolo.colore}}" ng-click="cambiaStato(statoTavolo)"></i>{{statoTavolo.stato}}</button>
-              </div>
-                </div>-->
             </div>
+            <i class="icon ion-chevron-right" ></i>
           </a>
         </ion-list>
 

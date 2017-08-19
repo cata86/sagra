@@ -3,19 +3,27 @@ angular.module('App')
     statoTavolo: {
       accomodato: {
         stato: 'ACCOMODATO',
-        colore: 'red'
+        colore: 'red',
+        campoOrario: 'accomodatoOrario',
+        campoPersona: 'accomodatoPersona'
       },
       in_ordinazione: {
         stato: 'IN_ORDINAZIONE',
-        colore: 'yellow'
+        colore: 'yellow',
+        campoOrario: 'inOrdinazioneOrario',
+        campoPersona: 'inOrdinazionePersona'
       },
       ordinato: {
         stato: 'ORDINATO',
-        colore: 'green'
+        colore: 'green',
+        campoOrario: 'ordinazioneOrario',
+        campoPersona: 'ordinazionePersona'
       },
       liberato: {
         stato: 'LIBERATO',
-        colore: 'blue'
+        colore: 'blue',
+        campoOrario: 'liberatoOrario',
+        campoPersona: 'liberatoPersona'
       }
     }
   });

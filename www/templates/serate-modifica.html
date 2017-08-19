@@ -18,10 +18,6 @@
                 <input type="date" data-date-format="dd/mm/yyyy"  required ng-model="data.serata.data" placeholder="Data">
               </label>
           </div>
-          <div>
-            <button class="button btn-cambia-stato" ng-click="apriSerata()"></i>APRI</button>
-            <button class="button btn-cambia-stato" ng-click="chiudiSerata(statoTavolo)"></i>CHIUDI</button>
-          </div>
           <button ng-disabled="modificaSerataForm.$invalid" class="button button-positive button-block button-light animated bounceInUp" ng-click="modificaSerata()">Salva</button>
         </form>
 

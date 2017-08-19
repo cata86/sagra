@@ -9,6 +9,9 @@
       <a class="item item-icon-left item-button-right"  ng-click="" ng-repeat="tavoloAccomodato in tavoliAccomodatiByTavoloId">
         <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavoloAccomodato.stato)}}" title="{{tavoloAccomodato.stato}}"></i>
         {{tavoloAccomodato.descrizione}}
+        <span style="padding-left: 20px" class="orarioAccomodato">
+          {{tavoloAccomodato.accomodatoOrario | date : 'HH:mm'}}
+        </span>
         <button class="button button-assertive" ng-click="chiudiTavoloAccomodato(tavoloAccomodato)">Chiudi</button>
       </a>
     </ion-list>

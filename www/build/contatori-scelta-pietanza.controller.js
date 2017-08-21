@@ -39,14 +39,15 @@
           $scope.pietanze = lodash.sortBy(
             response.data, ['nome']
           );
-            //aggiorno le quantita delle pietanze ordinate
+
           lodash.forEach($scope.pietanze, function(value, key) {
-            value.checked = false;
+            value.contatore = false;
             var pietanza;
             if($scope.data){
               pietanza = lodash.find($scope.data.pietanzeContatori, {id:value.id});
-              if(pietanza)
-                value.checked = pietanza.checked;
+              if(pietanza){
+                value.contatore = true;
+              }
             }
           });
 
@@ -61,16 +62,36 @@
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
         var pietanzeContatori = lodash.filter($scope.pietanze, function(obj){
-          return (obj.checked === true);
+          return (obj.contatore === true);
         });
 
-        $state.go('app.contatori', {
-          title: 'Contatori',
-          icon: null,
-          color: null,
-          pietanzeContatori: pietanzeContatori
-        },
-        {reload: true});
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Salva contatori',
+          template: 'Salvare i contatori?'
+        });
+
+        confirmPopup.then(function(res) {
+          if(res) {
+            Ordinatore.setContatori(pietanzeContatori).then(function(response){
+              $state.go('app.contatori', {
+                title: 'Contatori',
+                icon: null,
+                color: null,
+                pietanzeContatori: pietanzeContatori
+              },
+              {reload: true});
+            });
+          } else {
+            $state.go('app.contatori', {
+              title: 'Contatori',
+              icon: null,
+              color: null,
+              pietanzeContatori: $scope.data.pietanzeContatori
+            },
+            {reload: true});
+          }
+        });
+
       };
 
       // override soft back

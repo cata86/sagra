@@ -15,8 +15,12 @@
       };
 
       $scope.data = {
-        pietanzeContatori: $stateParams.pietanzeContatori ? $stateParams.pietanzeContatori : []
+        pietanzeContatori: $stateParams.pietanzeContatori ?
+          $stateParams.pietanzeContatori : []
       }
+
+      if(!$stateParams.pietanzeContatori)
+      Ordinatore.getContatori().then(function(response){ $scope.data.pietanzeContatori = response.data })
 
       $scope.aggiungiContatore = function(){
         $state.go('app.contatoriSceltaPietanza', {data: $scope.data});

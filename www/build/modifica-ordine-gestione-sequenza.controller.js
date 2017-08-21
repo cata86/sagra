@@ -98,7 +98,11 @@
         $state.go('app.modificaOrdineSceltaPietanza', {data: $scope.data});
       }
 
-      $scope.modificaOrdine = function(){
+      $scope.modificaStampaOrdine = function(){
+        $scope.modificaOrdine(true);
+      };
+
+      $scope.modificaOrdine = function(stampa){
         var pietanzeOrdine = [];
         var numeroCopertiPietanza = 0;
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
@@ -133,7 +137,12 @@
                 pietanzeOrdinate: pietanzeOrdine
               }
             ).then(function(response){
-               $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
+              if(stampa){
+                 Ordinatore.stampaScontrino($scope.data.ordine.id).then(function(response){
+                   Ordinatore.stampaCucina($scope.data.ordine.id);
+                });
+              }
+              $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
             });
           }
         });

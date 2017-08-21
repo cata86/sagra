@@ -4,8 +4,8 @@
       <button class="button button-positive" ng-click="aggiungiContatore()">Aggiungi contatore</button>
     </div>
     <ion-list can-swipe="true" class="list-sagra">
-      <div class="item item-button-right" ng-repeat="pietanza in data.pietanzeContatori">
-        <span class="nome-pietanza">{{pietanza.nome}}</span>
+      <div class="item item-button-right" ng-repeat="pietanzaOrdinata in data.pietanzeContatori">
+        <span >{{pietanzaOrdinata.pietanza.nome}}</span>
         <span >qnt</span>
       </div>
     </ion-list>

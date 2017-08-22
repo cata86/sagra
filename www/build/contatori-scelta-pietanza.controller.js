@@ -14,10 +14,6 @@
         color: $stateParams.color
       };
 
-      $scope.data = {
-        pietanzeContatori: $stateParams.data ? $stateParams.data.pietanzeContatori : []
-      }
-
       $scope.idSagra = 1; //TODO
 
       $scope.categoriaSelezionata = 1;
@@ -33,23 +29,15 @@
       $scope.caricaCategorie();
 
 
-      $scope.pietanze = [];
+      $scope.data = {
+        pietanze: []
+      };
+
       $scope.caricaPietanze = function( ){
         Ordinatore.getListaPietanze({idSagra: $scope.idSagra}).then(function(response){
-          $scope.pietanze = lodash.sortBy(
+          $scope.data.pietanze = lodash.sortBy(
             response.data, ['nome']
           );
-            //aggiorno le quantita delle pietanze ordinate
-          lodash.forEach($scope.pietanze, function(value, key) {
-            value.checked = false;
-            var pietanza;
-            if($scope.data){
-              pietanza = lodash.find($scope.data.pietanzeContatori, {id:value.id});
-              if(pietanza)
-                value.checked = pietanza.checked;
-            }
-          });
-
         });
       };
 
@@ -60,17 +48,35 @@
 
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
-        var pietanzeContatori = lodash.filter($scope.pietanze, function(obj){
-          return (obj.checked === true);
+        var pietanzeContatoriToSave = lodash.filter($scope.data.pietanze, function(obj){
+          return (obj.contatore === true);
         });
 
-        $state.go('app.contatori', {
-          title: 'Contatori',
-          icon: null,
-          color: null,
-          pietanzeContatori: pietanzeContatori
-        },
-        {reload: true});
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Salva contatori',
+          template: 'Salvare i contatori?'
+        });
+
+        confirmPopup.then(function(res) {
+          if(res) {
+            Ordinatore.setContatori(pietanzeContatoriToSave).then(function(response){
+              $state.go('app.contatori', {
+                title: 'Contatori',
+                icon: null,
+                color: null
+              },
+              {reload: true});
+            });
+          } else {
+            $state.go('app.contatori', {
+              title: 'Contatori',
+              icon: null,
+              color: null
+            },
+            {reload: true});
+          }
+        });
+
       };
 
       // override soft back

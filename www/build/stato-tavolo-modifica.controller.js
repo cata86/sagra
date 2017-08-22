@@ -4,8 +4,8 @@
     .module('App')
     .controller('StatoTavoloModificaController', StatoTavoloModificaController);
 
-StatoTavoloModificaController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
-  function StatoTavoloModificaController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
+StatoTavoloModificaController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Accompagnatore', 'lodash', 'Constants', 'config'];
+  function StatoTavoloModificaController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Accompagnatore, lodash, Constants, config) {
 
     $scope.item = {
         title: $stateParams.title,
@@ -46,7 +46,13 @@ StatoTavoloModificaController.$inject = ['$scope', '$rootScope', '$ionicPlatform
       $scope.statoTavoloSelected = statoTavolo;
     }
 
-    $scope.modificaStatoTavolo = function(){
+    $scope.modificaStatoTavolo = function(tavoloAccomodato){
+      Accompagnatore.impostaStatoTavoloAccomodato(
+        tavoloAccomodato.id,
+        $scope.statoTavoloSelected,
+        config.operatore).then(function(response){
+          $state.go('app.stato-tavolo', { title: 'Stato tavolo' }, {reload: true});
+      });
     }
 
 

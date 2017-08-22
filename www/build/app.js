@@ -210,8 +210,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
           params: {
             color: null,
             icon: null,
-            title: null,
-            pietanzeContatori: null
+            title: null
           },
           cache: false,
           views: {

@@ -4,18 +4,14 @@
 
 //finire i contatori
 //finire gestione serate (caricare la serata all avvio perchè serve nei tavoli accomodati)
-//finire serate stampa chiusura
-//finire modifica ordine con ristampa scontrini
+//finire modifica ordine con ristampa scontrini - test
 
 //cambia operatore
 
+//cambia stato tavolo poi non sbianca gli stati successivi
+
 /******************************************* ANDREA ******************************************/
 
-//API cambia stato tavolo devo passare id tavolo accomodato e non id tavolo reale
-//API per contatori (post, get)
-//API che calcola la quantità dei contatori (passerei una lista di id)
-//API creaOrdine se c'è numCoperti allora cambia stato del tavolo in ordinato altrimenti no
-//API modificaOrdine
 //indietro non funziona sempre bene prova ad esempio a fare un ordine a mettere pietanze e tornare indietro di vari step
 //serate fare datepicker
 

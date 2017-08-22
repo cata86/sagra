@@ -4,8 +4,8 @@
     .module('App')
     .controller('OrdiniSceltaTavoloController', OrdiniSceltaTavoloController);
 
-OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'lodash', 'Constants'];
-  function OrdiniSceltaTavoloController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, lodash, Constants) {
+OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Accompagnatore', 'Ordinatore', 'lodash', 'Constants', 'config'];
+  function OrdiniSceltaTavoloController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Accompagnatore, Ordinatore, lodash, Constants, config) {
 
     $scope.item = {
         title: $stateParams.title,
@@ -54,20 +54,41 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform'
 
 
     $scope.visualizzaTavolo = function(tavolo){
-      if(tavolo.stato === Constants.statoTavolo.in_ordinazione.stato){
-        var confirmPopup = $ionicPopup.confirm({
-          title: 'Tavolo non prenotabile',
-          template: 'Il tavolo è servito da un altro operatore, proseguire?'
+      var confirmPopup = $ionicPopup.confirm({
+          title: 'Tavolo in ordinazione',
+          template: tavolo.descrizione+' in ordinazione?'
         });
 
         confirmPopup.then(function(res) {
           if(res) {
-            $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
+            if(tavolo.stato === Constants.statoTavolo.in_ordinazione.stato){
+              var confirmPopup = $ionicPopup.confirm({
+                title: 'Tavolo non prenotabile',
+                template: 'Il tavolo è servito da un altro operatore, proseguire?'
+              });
+
+              confirmPopup.then(function(res) {
+                if(res) {
+                  Accompagnatore.impostaStatoTavoloAccomodato(
+                    tavolo.id,
+                    Constants.statoTavolo.in_ordinazione.stato,
+                    config.operatore ? config.operatore : 'Test'
+                    ).then(function(response){
+                       $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
+                  });
+                }
+              });
+            } else {
+              Accompagnatore.impostaStatoTavoloAccomodato(
+                tavolo.id,
+                Constants.statoTavolo.in_ordinazione.stato,
+                config.operatore ? config.operatore : 'Test'
+                ).then(function(response){
+                    $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
+              });
+            }
           }
         });
-      } else {
-        $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
-      }
     }
 
 

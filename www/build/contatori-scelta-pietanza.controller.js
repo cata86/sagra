@@ -14,10 +14,6 @@
         color: $stateParams.color
       };
 
-      $scope.data = {
-        pietanzeContatori: $stateParams.data ? $stateParams.data.pietanzeContatori : []
-      }
-
       $scope.idSagra = 1; //TODO
 
       $scope.categoriaSelezionata = 1;
@@ -33,24 +29,15 @@
       $scope.caricaCategorie();
 
 
-      $scope.pietanze = [];
+      $scope.data = {
+        pietanze: []
+      };
+
       $scope.caricaPietanze = function( ){
         Ordinatore.getListaPietanze({idSagra: $scope.idSagra}).then(function(response){
-          $scope.pietanze = lodash.sortBy(
+          $scope.data.pietanze = lodash.sortBy(
             response.data, ['nome']
           );
-
-          lodash.forEach($scope.pietanze, function(value, key) {
-            value.contatore = false;
-            var pietanza;
-            if($scope.data){
-              pietanza = lodash.find($scope.data.pietanzeContatori, {id:value.id});
-              if(pietanza){
-                value.contatore = true;
-              }
-            }
-          });
-
         });
       };
 
@@ -61,7 +48,7 @@
 
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
-        var pietanzeContatori = lodash.filter($scope.pietanze, function(obj){
+        var pietanzeContatoriToSave = lodash.filter($scope.data.pietanze, function(obj){
           return (obj.contatore === true);
         });
 
@@ -72,12 +59,11 @@
 
         confirmPopup.then(function(res) {
           if(res) {
-            Ordinatore.setContatori(pietanzeContatori).then(function(response){
+            Ordinatore.setContatori(pietanzeContatoriToSave).then(function(response){
               $state.go('app.contatori', {
                 title: 'Contatori',
                 icon: null,
-                color: null,
-                pietanzeContatori: pietanzeContatori
+                color: null
               },
               {reload: true});
             });
@@ -85,8 +71,7 @@
             $state.go('app.contatori', {
               title: 'Contatori',
               icon: null,
-              color: null,
-              pietanzeContatori: $scope.data.pietanzeContatori
+              color: null
             },
             {reload: true});
           }

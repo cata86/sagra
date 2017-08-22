@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="co.nicholls.ionicstartertemplate" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ionic Starter Template</name>
+    <name>Sagra</name>
     <description>
-    The Best Ionic v1.x starter template
+    Sagra
   </description>
-    <author email="jdnichollsc@hotmail.com" href="http://www.nicholls.co/">
-    Juan David Nicholls Cardona
+    <author>
+    Alessia Andrea
   </author>
     <content src="index.html" />
     <access origin="*" />

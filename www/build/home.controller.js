@@ -12,6 +12,9 @@
       nomeOperatore : ''
     }
 
+    if( $window.localStorage.getItem("nomeOperatore"))
+      $scope.data.nomeOperatore = $window.localStorage.getItem("nomeOperatore");
+
     $scope.entra = function(){
        config.operatore = $scope.data.nomeOperatore;
        $window.localStorage.setItem("nomeOperatore", $scope.data.nomeOperatore);

@@ -4,7 +4,7 @@
           <div class="list" >
               <label class="item item-input item-floating-label">
                 <span class="input-label">Host</span>
-                <input type="text" required ng-model="data.host"placeholder="Host">
+                <input type="text" required ng-model="data.host" placeholder="Host">
               </label>
           </div>
 
@@ -14,14 +14,13 @@
             </div>
             <ion-scroll style="height: 250px">
             <ion-list>
-              <ion-checkbox ng-repeat="item in data.itemConfigura" ng-model="item.checked" ng-checked="item.checked">{{ item.title }}</ion-checkbox>
+              <ion-checkbox ng-repeat="item in data.itemAbilitati" ng-model="item.checked" ng-checked="item.checked">{{ item.title }}</ion-checkbox>
             </ion-list>
               <ion-scroll/>
           </div>
 
           <button style="padding-top: 10px" ng-disabled="configuraForm.$invalid" class="button button-positive button-block button-light animated bounceInUp" ng-click="salvaConfigurazione()">Salva</button>
         </form>
+        <button style="padding-top: 10px" ng-disabled="configuraForm.$invalid" class="button button-assertive button-block button-light animated bounceInUp" ng-click="svuotaConfig()">Pulisci configurazione</button>
     </ion-content>
-
-
 </ion-view>

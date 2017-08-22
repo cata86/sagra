@@ -170,8 +170,8 @@
       var doCustomBack = function() {
         if($scope.data.pietanzeOrdinate.length > 0){
           var confirmPopup = $ionicPopup.confirm({
-            title: 'Cancellazione ordine',
-            template: 'L\'ordine verrà perso, confermi?'
+            title: 'Annulla modifica ordine',
+            template: 'Annullare la modifica dell\'ordine?'
           });
 
           confirmPopup.then(function(res) {

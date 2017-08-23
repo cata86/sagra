@@ -34,7 +34,7 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform'
           lodash.filter(response.data, function(tav){
             return tav.stato !== Constants.statoTavolo.ordinato.stato;
           }),
-          ['accomodatoOrario', 'codice'], ['desc', 'asc']
+          ['accomodatoOrario', 'codice'], ['asc', 'asc']
         );
         $scope.tavoliAccomodati = $scope.tavoliAccomodatiInAttesa;
       });

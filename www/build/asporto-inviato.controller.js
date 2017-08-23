@@ -13,6 +13,8 @@
       $scope.quotaPersona = ($stateParams.ordine && $stateParams.ordine.quotaPersona) ? $stateParams.ordine.quotaPersona : 0;
 
       $scope.nuovoOrdine = function(){
+        $state.go('app.asporto', {},
+        {reload: true});
         $state.go('app.gallery');
       }
 

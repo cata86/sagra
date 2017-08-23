@@ -11,6 +11,10 @@ span {
   font-size: 20px;
 }
 
+.bar-categorie {
+  height: 55px;
+}
+
 /********************* contatori-scelta-pietanza.html ***********************/
 
 .list-contatori div label{
@@ -73,7 +77,9 @@ span {
 .sequenza-title {
   background-color: rgba(56,126,245,0.15);
   border-top-color : rgb(56,126,245);
-  border-top-width : medium
+  border-top-width : medium;
+  height: 55px;
+
 }
 
 .sequenza-title .button-aggiungi {
@@ -88,6 +94,12 @@ span {
 
 /********************* ordini-scelta-pietanza.html ***********************/
 
+.list-ordini-scelta-pietanza .item {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .list-ordini-scelta-pietanza .item .row {
   padding: 0px;
@@ -109,10 +121,10 @@ span {
 }
 
 .btn-modifica-qnt-ordinata {
-  width: 45px;
-  min-width: 45px;
-  height: 40px;
-  min-height: 40px;
+  width: 50px;
+  min-width: 50px;
+  height: 45px;
+  min-height: 45px;
 }
 
 .qnt-ordinata {

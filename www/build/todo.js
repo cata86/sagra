@@ -1,25 +1,28 @@
-//tavoli: ricerca tavolo reale
+//tavoli: ricerca tavolo reale ->FATTO
 
-//ordini: lista tavoli in attesa va ordinato per orario ASC
-//ordini: l'orario va a capo
+//ordini: l'orario va a capo  ->FATTO
 //ordini: pulsante aggiorna lista tavoli
+//ordini e modifica ordini: lista tavoli in attesa va ordinato per orario ASC ->FATTO
 //ordini e modifica ordini: valutare se mettere un pulsante indietro
-//ordini e modifica ordini: barra categorie più alta
-//ordini e modifica ordini: più e meno aumenta dimensione
-//ordini e modifica ordini: nascondere le sequenze
+//ordini e modifica ordini: barra categorie più alta  ->FATTO
+//ordini e modifica ordini: più e meno aumenta dimensione -> sistemare asportooooooooooo e verifica ordine
+//ordini e modifica ordini: nascondere le sequenze  ->FATTO
+//modifica ordine  valuatre responsive e padding
 
-//modifica ordine: non va la modifica e stampa
+//modifica ordine: non va la modifica e stampa -> fatto
 
-//asporto: torna all'asporto dopo aver fatto un ordine
+//asporto: torna all'asporto dopo aver fatto un ordine  ->FATTO
 //asporto: calcola resto
 
 //serate: fare datepicker
 //serate: non è responsive
 
 //contatori: aggiorna contatori ogni X minuti
+//contatori: null da errore
 
-//icona dell'app
+//icona dell'app  ->FATTO
 //menù laterale togliere items in base alla configurazione
+//torna alla home -> FATTO appare indietro e non il menu
 
 //Verificare come funziona il pulsante indietro
 
@@ -36,7 +39,7 @@
 
 /********BACK_END */
 //Se contiene solo ordini inviare anche lo scontrino alla stampante dolci
-
+//riga negli scontrini
 
 
 

@@ -1,7 +1,7 @@
 <ion-view class="itemView" view-title="{{data.tavolo.descrizione}} - Selezione ordine" >
     <ion-content overflow-scroll="true">
         <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
-          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaOrdine(ordine)" ng-repeat="ordine in ordiniTavolo">
+          <a class="item item-icon-right"  ng-click="visualizzaOrdine(ordine)" ng-repeat="ordine in ordiniTavolo">
             <div class="row responsive-sm">
               <div class="col">
                 <span>{{ordine.data | date : 'dd/MM/yyyy HH:mm'}}</span>

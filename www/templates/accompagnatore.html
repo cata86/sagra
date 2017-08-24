@@ -1,10 +1,11 @@
 <ion-view class="itemView" view-title="{{item.title}}">
     <ion-content overflow-scroll="true">
+       
         <div class="bar bar-header item-input-inset" >
           <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
          <ion-list can-swipe="true" class="list-sagra">
-            <a class="item item-icon-right" ui-sref="app.accompagnatoreTavolo({tavoloReale:tavoloReale})" ng-repeat="tavoloReale in tavoliReali | filter: (search.codice)  && search ">
+            <a class="item item-icon-right" ui-sref="app.accompagnatoreTavolo({tavoloReale:tavoloReale})" ng-repeat="tavoloReale in tavoliReali | filter:((search.codice===null)?undefined:search)">
                 {{tavoloReale.descrizione}}
                 <i class="icon ion-chevron-right" ></i>
             </a>

@@ -9,7 +9,7 @@
           <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
         <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
-          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter: (search.codice)  && search ">
+          <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter:((search.codice===null)?undefined:search) ">
             <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavolo.stato}}"></i>
             <div class="row ">
               <div class="col">

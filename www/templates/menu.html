@@ -20,7 +20,7 @@
         </ion-header-bar>
         <ion-content class="has-header">
             <ion-list>
-                <ion-item ng-repeat="item in items" menu-close nav-direction="enter" ui-sref="app.{{item.view}}({ title: item.title, icon: item.icon, color: item.color })"
+                <ion-item ng-repeat="item in items" ng-if="item.checked" menu-close nav-direction="enter" ui-sref="app.{{item.view}}({ title: item.title, icon: item.icon, color: item.color })"
                     class="item item-icon-right" ui-sref-active="active">{{item.title}} <i class="icon ion-chevron-right"></i></ion-item>
             </ion-list>
         </ion-content>

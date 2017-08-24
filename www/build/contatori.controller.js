@@ -6,7 +6,7 @@
         .controller('ContatoriController', ContatoriController);
 
     ContatoriController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Accompagnatore', 'Ordinatore', 'config', 'lodash'];
-    function ContatoriController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Accompagnatore, Ordinatore, config, lodash) {
+    function ContatoriController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, $interval, Accompagnatore, Ordinatore, config, lodash) {
 
       $scope.item = {
         title: $stateParams.title,
@@ -18,11 +18,19 @@
         pietanzeContatori: []
       };
 
-      Ordinatore.getContatori().then(function(response){
-        $scope.data.pietanzeContatori = lodash.sortBy(
-          response.data, ['categoria.codice', 'nome']
-        );
-      })
+      $scope.getContatori = function(){
+        Ordinatore.getContatori().then(function(response){
+          $scope.data.pietanzeContatori = lodash.sortBy(
+            response.data, ['categoria.codice', 'nome']
+          );
+        })
+      };
+
+      $scope.getContatori();
+
+      $interval(function () {
+          $scope.getContatori();
+      }, 120000);  //ogni due minuti
 
       $scope.aggiungiContatore = function(){
         $state.go('app.contatoriSceltaPietanza', {data: $scope.data});

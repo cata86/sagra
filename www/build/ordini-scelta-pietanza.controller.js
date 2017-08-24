@@ -54,6 +54,7 @@
       $scope.categoriaSelezionata = categoria.id;
     }
 
+
     $scope.modificaQuantita = function(pietanza, operazione){
       //modifica sempre array pietanze
       var pietanza = lodash.find($scope.pietanze, {id:pietanza.id});
@@ -63,6 +64,10 @@
         if(pietanza.quantita > 0)
           pietanza.quantita = pietanza.quantita-1;
       }
+    }
+
+    $scope.tornaRiepilogo = function(){
+      doCustomBack();
     }
 
     // run this function when either hard or soft back button is pressed

@@ -48,9 +48,9 @@
 
       // run this function when either hard or soft back button is pressed
       var doCustomBack = function() {
-        var pietanzeContatoriToSave = lodash.filter($scope.data.pietanze, function(obj){
-          return (obj.contatore === true);
-        });
+        // var pietanzeContatoriToSave = lodash.filter($scope.data.pietanze, function(obj){
+          // return (obj.contatore === true);
+        // });
 
         var confirmPopup = $ionicPopup.confirm({
           title: 'Salva contatori',
@@ -59,7 +59,7 @@
 
         confirmPopup.then(function(res) {
           if(res) {
-            Ordinatore.setContatori(pietanzeContatoriToSave).then(function(response){
+            Ordinatore.setContatori($scope.data.pietanze).then(function(response){
               $state.go('app.contatori', {
                 title: 'Contatori',
                 icon: null,

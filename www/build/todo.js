@@ -1,27 +1,19 @@
-//tavoli: ricerca tavolo reale ->FATTO
+//modifica ordine: non va la modifica e stampa -> FATTO
 
-//ordini: l'orario va a capo  ->FATTO
-//ordini: pulsante aggiorna lista tavoli
-//ordini e modifica ordini: lista tavoli in attesa va ordinato per orario ASC ->FATTO
-//ordini e modifica ordini: valutare se mettere un pulsante indietro nella scelta pientaze -> FATTO verificar se funziona e metterlo anche in apsorto e modifica
-//ordini e modifica ordini: barra categorie più alta  ->FATTO
-//ordini e modifica ordini: più e meno aumenta dimensione -> FATTO sistemare asportooooooooooo e verifica ordine
-//ordini e modifica ordini: nascondere le sequenze  ->FATTO
-//modifica ordine  valuatre responsive e padding
-
-//modifica ordine: non va la modifica e stampa -> fatto
-
+//ordini e modifica ordini: messo pulsante torna al riepilogo indietro nella scelta pientaze -> FATTO ordine, modifica, asporto
+//ordini e modifica ordini: barra categorie più alta  -> FATTO ordine, modifica, asporto
+//ordini e modifica ordini: più e meno aumenta dimensione -> FATTO ordine, modifica, asporto
 //asporto: torna all'asporto dopo aver fatto un ordine  ->FATTO
-//asporto: calcola resto
 
-//serate: fare datepicker
-//serate: non è responsive
+//ordini: pulsante aggiorna lista tavoli
+//serate: fare datepicker da finire
+//serate: non è responsive -> FATTO
 
-//contatori: aggiorna contatori ogni X minuti ->FATTO
+//contatori: aggiorna contatori ogni X minuti -> FATTO lasciamolo spento
+//stato tavolo modifica -> padding
 
-//icona dell'app  ->FATTO
-//menù laterale togliere items in base alla configurazione ->FATTO verificare
-//torna alla home -> FATTO appare indietro e non il menu
+
+//torna alla home -> FATTO ma appare indietro e non il menu
 
 //Verificare come funziona il pulsante indietro
 
@@ -49,3 +41,4 @@
 //gestire le note delle pietanzeOrdinate
 //solo in una sequenza posso mettere coperti
 //gestione idsagra
+//asporto: calcola resto

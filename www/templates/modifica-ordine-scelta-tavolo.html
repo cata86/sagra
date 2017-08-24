@@ -11,10 +11,10 @@
         <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-tavolo">
           <a class="item item-icon-left item-icon-right"  ng-click="visualizzaTavolo(tavolo)" ng-repeat="tavolo in tavoliAccomodati | filter: { asporto: btnSelectedAsporto } | filter:((search.codice===null)?undefined:search) ">
             <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavoloAccomodato.stato}}"></i>
-            <div class="row responsive-sm">
+            <div class="row">
               <div class="col">
                 <span ng-if="!tavolo.asporto">{{tavolo.descrizione}}</span>
-                <span ng-if="tavolo.asporto">Asporto - {{tavolo.nomeAsporto}}</span>
+                <span ng-if="tavolo.asporto">{{tavolo.nomeAsporto ? tavolo.nomeAsporto : 'Asporto'}}</span>
               </div>
               <div class="col">
                 <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>

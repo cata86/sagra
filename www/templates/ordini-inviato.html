@@ -1,17 +1,17 @@
 <ion-view class="itemView" view-title="Ordine inviato - {{tavolo.descrizione}}" >
     <ion-content>
       <div>
-        <div class="row responsive-sm">
+        <div class="row">
             <span align="right" class="col col-100">
                 <span>Totale: {{totale  | number:2}}€</span>
             </span>
         </div>
-        <div class="row responsive-sm">
+        <div class="row">
             <span align="right" class="col col-100">
                 <span>A persona: {{quotaPersona  | number:2}}€</span>
             </span>
         </div>
-        <div class="row responsive-sm" style="padding-top: 10px">
+        <div class="row" style="padding-top: 10px">
           <button  class="button button-positive button-block button-light animated bounceInUp" ng-click="nuovoOrdine()">Torna ai tavoli</button>
         </div>
     </ion-content>

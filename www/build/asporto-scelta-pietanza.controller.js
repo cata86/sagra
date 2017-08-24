@@ -63,6 +63,10 @@
       }
     }
 
+    $scope.tornaRiepilogo = function(){
+      doCustomBack();
+    }
+
     // run this function when either hard or soft back button is pressed
     var doCustomBack = function() {
       //rimando indietro tt le pietanze con quantita diversa da zero

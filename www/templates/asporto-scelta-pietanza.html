@@ -1,20 +1,29 @@
 <ion-view class="itemView" view-title="Aggiungi pietanza" >
   <ion-content>
-    <ion-list can-swipe="true" class="list-sagra">
-      <div class="item item-button-right" ng-repeat="pietanza in pietanze | filter: { categoria: { id: categoriaSelezionata } }">
-        <span class="nome-pietanza">{{pietanza.nome}}</span>
-        <div class="buttons">
-          <button class="button button-calm" ng-click="modificaQuantita(pietanza, 'rimuovi')" >
-            <i class="icon ion-ios-minus"></i>
-          </button>
-          <span class="qnt-ordinata"><strong>{{pietanza.quantita}}</strong></span>
-          <button class="button button-positive" ng-click="modificaQuantita(pietanza, 'aggiungi')" >
-            <i class="icon ion-ios-plus"></i>
-          </button>
+    <div class="item item-divider">
+      <button class="button button-positive" ng-click="tornaRiepilogo()">Torna al riepilogo</button>
+    </div>
+    <ion-list can-swipe="true" class="list-sagra list-ordini-scelta-pietanza">
+      <div class="item " ng-repeat="pietanza in pietanze | filter: { categoria: { id: categoriaSelezionata } }">
+        <div class="row row-center">
+          <div class="col">
+            <span class="nome-pietanza">{{pietanza.nome}}<br>{{pietanza.prezzo | number:2}} €</span>
+          </div>
+          <div class="col">
+            <div class="buttons wrapper-btn-qnt-ordinata">
+                <button class="button button-calm btn-modifica-qnt-ordinata" ng-click="modificaQuantita(pietanza, 'rimuovi')" >
+                  <i class="icon ion-ios-minus"></i>
+                </button>
+                <span class="qnt-ordinata"><strong>{{pietanza.quantita}}</strong></span>
+                <button class="button button-positive btn-modifica-qnt-ordinata" ng-click="modificaQuantita(pietanza, 'aggiungi')" >
+                  <i class="icon ion-ios-plus"></i>
+                </button>
+            </div>
+
+          </div>
         </div>
       </div>
     </ion-list>
-
   </ion-content>
 
   <ion-footer-bar class="bar-light bar-categorie">

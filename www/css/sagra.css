@@ -143,6 +143,7 @@ span {
 .button-categoria {
   font-size: 17px !important;
   margin-right: 5px;
+  min-height: 45px !important;
 }
 
 

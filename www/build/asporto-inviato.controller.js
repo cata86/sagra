@@ -15,7 +15,6 @@
       $scope.nuovoOrdine = function(){
         $state.go('app.asporto', {},
         {reload: true});
-        $state.go('app.gallery');
       }
 
       // run this function when either hard or soft back button is pressed

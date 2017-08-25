@@ -1,7 +1,14 @@
 <ion-view class="itemView" view-title="{{item.title}}">
     <ion-content overflow-scroll="true">
        
-        <div class="bar bar-header item-input-inset" >
+        <div ng-show="data.serata.isAperta" class="bar item bar-positive">
+            <h1 class="title">Serata {{data.serata.data}}</h1>
+        </div>
+        <div ng-hide="data.serata.isAperta" class="bar item bar-assertive">
+            <h1 class="title">Nessuna serata aperta</h1>
+        </div>
+
+        <div class="bar item-input-inset" >
           <input type="number" placeholder="Ricerca tavolo ..." ng-model="search.codice" />
         </div>
          <ion-list can-swipe="true" class="list-sagra">

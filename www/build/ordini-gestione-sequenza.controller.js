@@ -109,6 +109,12 @@
               }
             ).then(function(response){
                $state.go('app.ordiniInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});
+            }).catch(function(e){
+                console.log("Errore durante ordine!",e);
+                $ionicPopup.alert({
+                  title: 'Errore',
+                  template: 'Errore durante l\'invio dell\'ordine. Riprovare. Non chiudere l\'ordine altrimenti verrà perso'
+                });
             });
           }
         });

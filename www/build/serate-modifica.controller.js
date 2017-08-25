@@ -25,10 +25,10 @@
 
 
       $scope.modificaSerata = function(){
-        Cassa.modificaSerata({
-          serata: serata
-        }).then(function(response){
-
+        Cassa.modificaSerata(
+          $scope.data.serata
+        ).then(function(response){
+            $state.go('app.serate', { title: 'Serate' }, {reload: true});
         });
       };
 

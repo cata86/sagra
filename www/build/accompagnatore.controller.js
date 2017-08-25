@@ -5,14 +5,28 @@
     .module('App')
     .controller('AccompagnatoreController', AccompagnatoreController);
 
-  AccompagnatoreController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory', 'Accompagnatore', 'lodash'];
-  function AccompagnatoreController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Accompagnatore, lodash) {
+  AccompagnatoreController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory', 'Accompagnatore', 'lodash','Cassa'];
+  function AccompagnatoreController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Accompagnatore, lodash, Cassa) {
 
     $scope.item = {
       title: $stateParams.title,
       icon: $stateParams.icon,
       color: $stateParams.color
     };
+
+    $scope.idSagra = 1;
+    $scope.data = {};
+    Cassa.getListaSerate({idSagra: $scope.idSagra}).then(function(response){
+      $scope.data.serate = lodash.orderBy(
+        response.data, ['data'], ['desc']
+      );
+      if(lodash.find( $scope.data.serate, function(serata){
+          return serata.stato === 'APERTA';
+        })){
+          $scope.data.serata = {};
+          $scope.data.serata.isAperta = true;
+        }
+    });
 
 		$scope.tavoliReali = [];
 

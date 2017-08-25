@@ -5,8 +5,9 @@
     .module('App')
     .controller('AccompagnatoreTavoloController', AccompagnatoreTavoloController);
 
-  AccompagnatoreTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Accompagnatore', 'config', '$ionicPopup', 'lodash', 'Constants'];
-  function AccompagnatoreTavoloController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Accompagnatore, config, $ionicPopup, lodash, Constants) {
+  AccompagnatoreTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform', '$stateParams', '$ionicViewSwitcher', '$state', '$ionicHistory','Accompagnatore', 'config', '$ionicPopup', 'lodash', 'Constants','Cassa'];
+  function AccompagnatoreTavoloController($scope, $rootScope, $ionicPlatform, $stateParams, $ionicViewSwitcher, $state, $ionicHistory, Accompagnatore, config, $ionicPopup, lodash, Constants,Cassa) {
+
 
     $scope.tavoloRealeSelezionato = $stateParams.tavoloReale;
     $scope.tavoliAccomodatiByTavoloId = [];

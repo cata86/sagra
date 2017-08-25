@@ -74,7 +74,7 @@
         $state.go('app.ordiniSceltaPietanza', {data: $scope.data});
       }
 
-      $scope.inviaOrdine = function(){
+      $scope.inviaOrdine = function(mantieniInAttesa){
         var pietanzeOrdine = [];
         var numeroCopertiPietanza = 0;
         lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
@@ -105,7 +105,8 @@
                 idTavoloAccomodato: $scope.data.tavolo.id,
                 numCoperti: numeroCopertiPietanza,
                 personaOrdine: config.operatore,
-                pietanzeOrdinate: pietanzeOrdine
+                pietanzeOrdinate: pietanzeOrdine,
+                mantieniInAttesa: mantieniInAttesa
               }
             ).then(function(response){
                $state.go('app.ordiniInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});

@@ -41,6 +41,10 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform'
     };
     $scope.caricaTavoliAccomodati();
 
+    $scope.aggiornaTavoli = function( ){
+      // $scope.caricaTavoliAccomodati();
+       $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+    };
 
     $scope.setInAttesa = function(){
       $scope.tavoliAccomodati = $scope.tavoliAccomodatiInAttesa;

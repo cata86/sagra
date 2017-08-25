@@ -1,6 +1,6 @@
 (function() {
   var config = {
-    operatore: 'pippo',
+    operatore: 'noOperatore',
     apiHost: 'http://localhost:8080',
     passwordConfigurazione: 'sagra'
   };

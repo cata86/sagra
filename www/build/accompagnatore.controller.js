@@ -15,17 +15,26 @@
     };
 
     $scope.idSagra = 1;
-    $scope.data = {};
+    $scope.data = {
+      serata: {
+        isAperta: false
+      }
+    };
     Cassa.getListaSerate({idSagra: $scope.idSagra}).then(function(response){
       $scope.data.serate = lodash.orderBy(
         response.data, ['data'], ['desc']
       );
-      if(lodash.find( $scope.data.serate, function(serata){
-          return serata.stato === 'APERTA';
-        })){
-          $scope.data.serata = {};
-          $scope.data.serata.isAperta = true;
-        }
+      var serataFind = lodash.find( $scope.data.serate, function(serata){
+        return serata.stato === 'APERTA'
+      });
+      if(serataFind){
+        $scope.data = {
+          serata: {
+            isAperta: true,
+            data: serataFind.data
+          }
+        };
+      }
     });
 
 		$scope.tavoliReali = [];
@@ -36,7 +45,7 @@
             lodash.filter(response.data, function(tav){
               return tav.asporto === false;
             }),
-            ['codice']
+            ['id']
           );
     		})
     	};

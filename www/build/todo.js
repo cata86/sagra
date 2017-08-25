@@ -5,9 +5,9 @@
 //ordini e modifica ordini: più e meno aumenta dimensione -> FATTO ordine, modifica, asporto
 //asporto: torna all'asporto dopo aver fatto un ordine  ->FATTO
 
-//ordini: pulsante aggiorna lista tavoli -> FATTO da verificare
-//serate: fare datepicker da finire -> FATTO
-//serate: non è responsive -> FATTO
+//ordini: pulsante aggiorna lista tavoli -> FATTO da verificare  ok
+//serate: fare datepicker da finire -> FATTO ok
+//serate: non è responsive -> FATTO  ok
 
 //contatori: aggiorna contatori ogni X minuti -> FATTO lasciamolo spento
 //stato tavolo modifica -> FATTO

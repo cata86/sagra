@@ -5,7 +5,7 @@
         .module('App')
         .controller('ContatoriController', ContatoriController);
 
-    ContatoriController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Accompagnatore', 'Ordinatore', 'config', 'lodash'];
+    ContatoriController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', '$interval','Accompagnatore', 'Ordinatore', 'config', 'lodash'];
     function ContatoriController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, $interval, Accompagnatore, Ordinatore, config, lodash) {
 
       $scope.item = {

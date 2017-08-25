@@ -25,6 +25,17 @@ span {
 
 /********************* stato-tavolo-modifica.html ***********************/
 
+.list-stato-tavolo-modifica .item {
+  font-size: 18px;
+  padding-top: 3px !important;
+  padding-bottom: 0px !important;
+}
+
+.list-stato-tavolo-modifica .item .icon {
+  font-size: 20px;
+}
+
+
 .list-stato-tavolo-modifica .item .row {
   padding: 0px;
 }
@@ -55,6 +66,14 @@ span {
 }
 
 /********************* ordini-scelta-tavolo.html ***********************/
+
+.button-refresh {
+  min-height: 35px;
+  min-width: 35px;
+  float: right;
+  margin-right: 10px;
+}
+
 
 .list-ordini-scelta-tavolo .orario{
   font-size: 14px;
@@ -112,6 +131,7 @@ span {
 .nome-pietanza {
   white-space: normal;
   max-width: 150px;
+  font-size: 20px;
 }
 
 .wrapper-btn-qnt-ordinata {

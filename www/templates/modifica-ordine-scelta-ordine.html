@@ -4,7 +4,7 @@
           <a class="item item-icon-right"  ng-click="visualizzaOrdine(ordine)" ng-repeat="ordine in ordiniTavolo">
             <div class="row">
               <div class="col">
-                <span>{{ordine.data | date : 'dd/MM/yyyy HH:mm'}}</span>
+                <span>{{ordine.data | date : 'HH:mm'}}</span>
               </div>
               <div class="col">
                 <span>Coperti: {{ordine.numCoperti}}</span>

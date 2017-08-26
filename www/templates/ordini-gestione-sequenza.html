@@ -23,8 +23,12 @@
         </div>
         <div class="row">
           <div class="col text-right">
-            <button class="button icon-left ion-paper-airplane button-assertive" ng-click="inviaOrdine(false)">Invia e sposta</button>
-            <button class="button icon-left ion-paper-airplane button-positive" ng-click="inviaOrdine(true)">Invia</button>
+            <button ng-show="visualizzaInviaSposta()" ng-disabled="data.ordineInInvio" class="button icon-left ion-paper-airplane button-assertive"
+              ng-click="inviaOrdine(false)">Invia e sposta
+            </button>
+            <button ng-disabled="data.ordineInInvio" class="button icon-left ion-paper-airplane button-positive"
+              ng-click="inviaOrdine(true)">Invia
+            </button>
           </div>
         </div>
         <!--<div class="item item-divider sequenza-aggiungi">-->

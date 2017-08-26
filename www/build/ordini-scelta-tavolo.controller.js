@@ -36,14 +36,17 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform'
           }),
           ['accomodatoOrario', 'codice'], ['asc', 'asc']
         );
-        $scope.tavoliAccomodati = $scope.tavoliAccomodatiInAttesa;
+        if($scope.btnSelectedInAttesa)
+          $scope.tavoliAccomodati = $scope.tavoliAccomodatiInAttesa;
+        else
+          $scope.tavoliAccomodati = $scope.tavoliAccomodatiTutti;
       });
     };
     $scope.caricaTavoliAccomodati();
 
     $scope.aggiornaTavoli = function( ){
-      // $scope.caricaTavoliAccomodati();
-       $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
+      $scope.caricaTavoliAccomodati();
+      //  $state.go('app.ordini', { title: 'Ordini', icon: null, color: null }, {reload: true});
     };
 
     $scope.setInAttesa = function(){
@@ -73,23 +76,19 @@ OrdiniSceltaTavoloController.$inject = ['$scope', '$rootScope', '$ionicPlatform'
 
               confirmPopup.then(function(res) {
                 if(res) {
-                  Accompagnatore.impostaStatoTavoloAccomodato(
-                    tavolo.id,
-                    Constants.statoTavolo.in_ordinazione.stato,
-                    config.operatore ? config.operatore : 'Test'
-                    ).then(function(response){
-                       $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
-                  });
+                  $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
                 }
               });
-            } else {
+            } else if(tavolo.stato === Constants.statoTavolo.accomodato.stato){
               Accompagnatore.impostaStatoTavoloAccomodato(
                 tavolo.id,
                 Constants.statoTavolo.in_ordinazione.stato,
-                config.operatore ? config.operatore : 'Test'
+                config.operatore
                 ).then(function(response){
                     $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
               });
+            } else {
+               $state.go('app.ordiniGestioneSequenza', { tavolo: tavolo });
             }
           }
         });

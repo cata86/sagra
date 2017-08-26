@@ -5,8 +5,8 @@
         .module('App')
         .controller('OrdiniGestioneSequenzaController', OrdiniGestioneSequenzaController);
 
-    OrdiniGestioneSequenzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'config', 'lodash'];
-    function OrdiniGestioneSequenzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, config, lodash) {
+    OrdiniGestioneSequenzaController.$inject = ['$scope', '$rootScope', '$stateParams', '$ionicPlatform', '$ionicViewSwitcher', '$state', '$ionicHistory','$ionicPopup', 'Ordinatore', 'config', 'lodash', 'Constants'];
+    function OrdiniGestioneSequenzaController($scope, $rootScope, $stateParams, $ionicPlatform, $ionicViewSwitcher, $state, $ionicHistory, $ionicPopup, Ordinatore, config, lodash, Constants) {
 
       $scope.data = {
         tavolo: $stateParams.tavolo,
@@ -14,13 +14,18 @@
           $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
-        sequenze: $stateParams.sequenze ? $stateParams.sequenze : [1]
+        sequenze: $stateParams.sequenze ? $stateParams.sequenze : [1],
+        ordineInInvio: false
       };
 
       $scope.totale = 0;
       lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
         $scope.totale = $scope.totale+ (value.prezzo*value.quantita);
       });
+
+      $scope.visualizzaInviaSposta = function(){
+        return $scope.data.tavolo.stato !== Constants.statoTavolo.ordinato.stato;
+      }
 
       $scope.aggiungiSequenza = function(){
         var maxSequenza = lodash.max($scope.data.sequenze);
@@ -99,6 +104,7 @@
 
         confirmPopup.then(function(res) {
           if(res) {
+            $scope.data.ordineInInvio = true; //per evitare doppi click
             Ordinatore.creaOrdine(
               {
                 asporto: $scope.data.tavolo.asporto,
@@ -110,7 +116,9 @@
               }
             ).then(function(response){
                $state.go('app.ordiniInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});
+                $scope.data.ordineInInvio = false;
             }).catch(function(e){
+                $scope.data.ordineInInvio = false;
                 console.log("Errore durante ordine!",e);
                 $ionicPopup.alert({
                   title: 'Errore',

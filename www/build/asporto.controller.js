@@ -22,7 +22,8 @@
         pietanzeOrdinate: $stateParams.pietanzeOrdinate ? lodash.sortBy(
           $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
-        nomeAsporto: $stateParams.nomeAsporto ? $stateParams.nomeAsporto : ''
+        nomeAsporto: $stateParams.nomeAsporto ? $stateParams.nomeAsporto : '',
+        ordineInInvio: false
       };
 
       $scope.totale = 0;
@@ -59,32 +60,52 @@
 
         confirmPopup.then(function(res) {
           if(res) {
+            $scope.data.ordineInInvio = true;
             Accompagnatore.getListaTavoliReali({soloLiberi: false}).then(function(response){
               $scope.data.tavoloReale = lodash.filter(response.data, function(tavolo){
                 return tavolo.asporto === true;
               })[0];
 
-              //apro tavolo accomodato asporto
-              Accompagnatore.apriTavoloAccomodato(
-                $scope.data.tavoloReale.id,
-                config.operatore,
-                $scope.data.tavoloReale.asporto,
-                0,
-                $scope.data.nomeAsporto
-              ).then(function(response){
-                  $scope.data.tavolo = response.data;
-                  Ordinatore.creaOrdine(
-                  {
-                    asporto: $scope.data.tavolo.asporto,
-                    idTavoloAccomodato: $scope.data.tavolo.id,
-                    numCoperti: $scope.data.tavolo.numCoperti,
-                    personaOrdine: config.operatore,
-                    pietanzeOrdinate: pietanzeOrdine
-                  }
+              if($scope.data.tavoloReale) {
+                //apro tavolo accomodato asporto
+                Accompagnatore.apriTavoloAccomodato(
+                  $scope.data.tavoloReale.id,
+                  config.operatore,
+                  $scope.data.tavoloReale.asporto,
+                  0,
+                  $scope.data.nomeAsporto
                 ).then(function(response){
-                  $state.go('app.asportoInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});
+                    $scope.data.tavolo = response.data;
+                    Ordinatore.creaOrdine(
+                    {
+                      asporto: $scope.data.tavolo.asporto,
+                      idTavoloAccomodato: $scope.data.tavolo.id,
+                      numCoperti: $scope.data.tavolo.numCoperti,
+                      personaOrdine: config.operatore,
+                      pietanzeOrdinate: pietanzeOrdine,
+                      mantieniInAttesa: false
+                    }
+                  ).then(function(response){
+                    $state.go('app.asportoInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});
+                    $scope.data.ordineInInvio = false;
+                  })
+                  .catch(function(e){
+                    $scope.data.ordineInInvio = false;
+                    console.log("Errore durante ordine!",e);
+                    $ionicPopup.alert({
+                      title: 'Errore',
+                      template: 'Errore durante l\'invio dell\'ordine. Riprovare. Non chiudere l\'ordine altrimenti verrà perso'
+                    });
+                  });
+                })
+              } else {
+                $scope.data.ordineInInvio = false;
+                console.log("Errore durante ordine!",e);
+                $ionicPopup.alert({
+                  title: 'Errore',
+                  template: 'Errore durante l\'invio dell\'ordine. Manca tavolo asporto, contatta assistenza'
                 });
-              })
+              }
             })
           }
         });

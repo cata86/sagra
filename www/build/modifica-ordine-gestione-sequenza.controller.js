@@ -138,9 +138,7 @@
               }
             ).then(function(response){
               if(stampa){
-                 Ordinatore.stampaScontrino({idOrdine: $scope.data.ordine.id}).then(function(response){
-                   Ordinatore.stampaCucina({idOrdine: $scope.data.ordine.id});
-                });
+                Ordinatore.stampaTutto({idOrdine: $scope.data.ordine.id});
               }
               $state.go('app.modifica-ordine', { title: 'Modifica ordine', icon: null, color: null }, {reload: true});
             });

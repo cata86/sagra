@@ -28,9 +28,9 @@
 
       $scope.getContatori();
 
-      $interval(function () {
-          $scope.getContatori();
-      }, 120000);  //ogni due minuti
+      // $interval(function () {
+      //     $scope.getContatori();
+      // }, 120000);  //ogni due minuti
 
       $scope.aggiungiContatore = function(){
         $state.go('app.contatoriSceltaPietanza', {data: $scope.data});

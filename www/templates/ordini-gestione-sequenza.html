@@ -8,12 +8,19 @@
             <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
             ng-click="modificaPietanzeSequenza({{seq}})">Menù</button>
           </div>
-          <ion-list can-swipe="true" >
-              <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate | filter: { numSequenza: seq }">
-                  {{pietanzaOrdinata.nome}}
-                  <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
-              </a>
-          </ion-list>
+          <div ng-repeat="categoriaOrdinata in categoriePietanzeOrdinate">
+            <div class="item item-divider" style="text-align: center">
+              <span>
+              {{categoriaOrdinata.descrizioneBreve | uppercase}}
+              </span>
+            </div>
+            <ion-list can-swipe="true" >
+                <a class="item" ng-repeat="pietanzaOrdinata in data.pietanzeOrdinate | filter: { numSequenza: seq } | filter: { categoria: {codice: categoriaOrdinata.codice }}">
+                    {{pietanzaOrdinata.nome}}
+                    <span class="badge badge-assertive badge-qnt">{{pietanzaOrdinata.quantita}}</span>
+                </a>
+            </ion-list>
+          </div>
         </div>
 
         <div class="row">

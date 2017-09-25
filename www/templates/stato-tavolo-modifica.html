@@ -1,14 +1,13 @@
 <ion-view class="itemView" view-title="{{item.title}} - {{data.tavolo.descrizione}}" >
     <ion-content overflow-scroll="true">
-
-          <ion-list radio-group  class="list-stato-tavolo-modifica">
+          <ion-list radio-group class="list-sagra list-stato-tavolo-modifica">
             <ion-radio class="item  item-icon-right"
                 ng-repeat="statoTavolo in statiTavolo"
                 ng-model="statoTavoloSelected"
                 value="{{statoTavolo.stato}}"
-                ng-click="setStatoTavolo(statoTavolo.stato)"
-              >
-              <a style="border:none" class="item item-icon-left item-icon-right">
+                ng-click="setStatoTavolo(statoTavolo.stato)">
+              <a style="border:none" class="item item-icon-left item-icon-right" ng-style="
+              { 'background-color': statoTavolo.stato === data.tavolo.stato ? 'lightgray' : 'white'} ">
                 <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(statoTavolo.stato)}}" title="{{statoTavolo.stato}}"></i>
                 <div class="row responsive-sm">
                   <div class="col ">

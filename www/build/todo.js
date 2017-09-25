@@ -1,18 +1,27 @@
 
 //Verificare come funziona il pulsante indietro
-//Alert se non esiste una serata aperta (valutare dove, nei tavoli accomodati sicuramente)
 
 
+//modificate altezza righe stato tavolo
+//modifica stato tavolo riga colorata
+//verifica separatore categorie sia in ordine che in modifica
+//modificato allineamento pulsante accomodato
+//agginunto numero tavolo in accomoda
+
+
+//nome sagra
+//icona sagra
 
 /***************** TODO FUTURI ********************/
 //gestione sequenze
 //stampa per sequenza
-//gestire le note delle pietanzeOrdinate
 //solo in una sequenza posso mettere coperti
+
+//gestire le note delle pietanzeOrdinate
 //gestione idsagra
 //asporto: calcola resto
 //nei tavoli in attesa si vorrebbe spostare in alto un tavolo (esempio band va servito subito)
-
+//stampa solo scontrino, stampa solo cucina
 
 
 /***************** RICORDA ********************/

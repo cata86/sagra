@@ -15,6 +15,11 @@ span {
   height: 55px;
 }
 
+.align-button-center {
+  display: flex;
+  justify-content: center;
+}
+
 /********************* contatori-scelta-pietanza.html ***********************/
 
 .list-contatori div label{
@@ -27,8 +32,6 @@ span {
 
 .list-stato-tavolo-modifica .item {
   font-size: 18px;
-  padding-top: 3px !important;
-  padding-bottom: 0px !important;
 }
 
 .list-stato-tavolo-modifica .item .icon {

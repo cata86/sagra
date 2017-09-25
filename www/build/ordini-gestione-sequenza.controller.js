@@ -18,6 +18,12 @@
         ordineInInvio: false
       };
 
+      $scope.categoriePietanzeOrdinate = [];
+      lodash.forEach(
+        lodash.uniqBy($scope.data.pietanzeOrdinate, 'categoria.codice'), function(value){
+          $scope.categoriePietanzeOrdinate.push(value.categoria);
+      });
+
       $scope.totale = 0;
       lodash.forEach($scope.data.pietanzeOrdinate, function(value) {
         $scope.totale = $scope.totale+ (value.prezzo*value.quantita);

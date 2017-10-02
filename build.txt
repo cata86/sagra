@@ -1,0 +1,4 @@
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=/production/dev/androidStudio/android-studio/gradle/gradle-2.14.1/bin:$PATH
+ionic cordova build android
+

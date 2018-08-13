@@ -29,7 +29,7 @@
     $scope.caricaPietanze = function( ){
       Ordinatore.getListaPietanze({idSagra: $scope.idSagra}).then(function(response){
         $scope.pietanze = lodash.sortBy(
-          response.data, ['nome']
+          response.data, ['ordine', 'nome']
         );
         //aggiorno le quantita delle pietanze ordinate
         lodash.forEach($scope.pietanze, function(value, key) {

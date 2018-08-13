@@ -17,7 +17,7 @@
                 <button ng-if="serata.stato!=='CHIUSA'" class="button button-assertive" ng-click="chiudiSerata(serata)">Chiudi</button>
                 <button ng-if="serata.stato==='CHIUSA'" class="button button-assertive" ng-click="riapriSerata(serata)">Ri-apri</button>
                 <button class="button icon-left ion-printer button-energized" ng-click="stampaChiusuraSerata(serata)">Stampa</button>
-                <button class="button button-positive" ng-click="modificaSerata(serata)">Modifica</button>
+                <button ng-if="serata.stato!=='CHIUSA'" class="button button-positive" ng-click="modificaSerata(serata)">Modifica</button>
               </div>
             </div>
           </div>

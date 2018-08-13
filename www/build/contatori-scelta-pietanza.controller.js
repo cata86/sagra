@@ -36,7 +36,7 @@
       $scope.caricaPietanze = function( ){
         Ordinatore.getListaPietanze({idSagra: $scope.idSagra}).then(function(response){
           $scope.data.pietanze = lodash.sortBy(
-            response.data, ['nome']
+            response.data, ['ordine', 'nome']
           );
         });
       };

@@ -2,14 +2,6 @@
 //Verificare come funziona il pulsante indietro
 
 
-//modificate altezza righe stato tavolo
-//modifica stato tavolo riga colorata
-//verifica separatore categorie sia in ordine che in modifica
-//modificato allineamento pulsante accomodato
-//agginunto numero tavolo in accomoda
-//modificato nome sagra cablato nel menu.html e home.html
-//modficato icona sagra
-
 /***************** TODO FUTURI ********************/
 //gestione sequenze
 //stampa per sequenza
@@ -22,11 +14,17 @@
 //stampa solo scontrino, stampa solo cucina
 
 
+/*********** AVVIARE */
+
+/************ NUOVA SAGRA *********************/
+//modificare nome sagra cablato nel menu.html e home.html
+//modificare icona sagra
+
 /***************** RICORDA ********************/
 // il coperto deve avere codice 000
 // occorre sempre avere una serata aperta
 // nel db caricare dati sagra, pietanze e tavoli reali ricordare di caricare il tavolo asporto
-// solo gli ordini (scotrino + comande) che contengono solo dolci vanno dalla stampante dei dolci
+// le categorie vengono stampate nella stampante letta da DB mentre lo scontrino viene inviato ai dolci se contiene solo dolci
 // invia ordine il flag mantieniInAttesa: se false o null sposta il tavolo in ordinato, se true lo mette in accomodato se e solo se era accomodato o in_ordinazione
 
 

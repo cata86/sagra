@@ -11,10 +11,15 @@
 //gestione idsagra
 //asporto: calcola resto
 //nei tavoli in attesa si vorrebbe spostare in alto un tavolo (esempio band va servito subito)
-//stampa solo scontrino, stampa solo cucina
 
 
 /*********** AVVIARE */
+//ionic serve
+//export PATH=/home/vagrant/Downloads/apache-maven-3.5.0/bin/:$PATH
+//mvn -Dmaven.test.skip=true package
+
+
+
 
 /************ NUOVA SAGRA *********************/
 //modificare nome sagra cablato nel menu.html e home.html

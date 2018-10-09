@@ -15,7 +15,8 @@
         ) : [],
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
         sequenze: $stateParams.sequenze ? $stateParams.sequenze : [1],
-        ordineInInvio: false
+        ordineInInvio: false,
+        ospiti: false
       };
 
       $scope.categoriePietanzeOrdinate = [];
@@ -118,7 +119,8 @@
                 numCoperti: numeroCopertiPietanza,
                 personaOrdine: config.operatore,
                 pietanzeOrdinate: pietanzeOrdine,
-                mantieniInAttesa: mantieniInAttesa
+                mantieniInAttesa: mantieniInAttesa,
+                ospiti: $scope.data.ospiti
               }
             ).then(function(response){
                $state.go('app.ordiniInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});

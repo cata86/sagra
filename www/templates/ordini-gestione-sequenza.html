@@ -5,6 +5,9 @@
             <span>
               <!--<i class="icon ion-android-delete" ng-click="rimuoviSequenza({{seq}})" style="font-size:2em; vertical-align:middle; cursor: pointer"></i>  SEQ. {{seq}}-->
             </span>
+            <div class="item item-button-right" style="border-style: solid">
+                <ion-checkbox ng-model="data.ospiti" ng-checked="data.ospiti">Ospiti</ion-checkbox>
+            </div>
             <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
             ng-click="modificaPietanzeSequenza({{seq}})">Menù</button>
           </div>

@@ -23,7 +23,8 @@
           $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
         nomeAsporto: $stateParams.nomeAsporto ? $stateParams.nomeAsporto : '',
-        ordineInInvio: false
+        ordineInInvio: false,
+        ospiti: false
       };
 
       $scope.totale = 0;
@@ -83,7 +84,8 @@
                       numCoperti: $scope.data.tavolo.numCoperti,
                       personaOrdine: config.operatore,
                       pietanzeOrdinate: pietanzeOrdine,
-                      mantieniInAttesa: false
+                      mantieniInAttesa: false,
+                      ospiti: $scope.data.ospiti
                     }
                   ).then(function(response){
                     $state.go('app.asportoInviato', { tavolo: $scope.data.tavolo, ordine: response.data }, {});

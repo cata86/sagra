@@ -15,7 +15,8 @@
           $stateParams.pietanzeOrdinate, ['categoria.codice', 'nome']
         ) : [],
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
-        sequenze: $stateParams.ordine.sequenze ? $stateParams.ordine.sequenze : [1]
+        sequenze: $stateParams.ordine.sequenze ? $stateParams.ordine.sequenze : [1],
+        ospiti: $stateParams.ordine.ospiti ? $stateParams.ordine.ospiti : false
       };
 
       if(!$stateParams.pietanzeOrdinate){
@@ -142,7 +143,8 @@
                 idTavoloAccomodato: $scope.data.tavolo.id,
                 numCoperti: numeroCopertiPietanza,
                 personaOrdine: config.operatore,
-                pietanzeOrdinate: pietanzeOrdine
+                pietanzeOrdinate: pietanzeOrdine,
+                ospiti: $scope.data.ospiti
               }
             ).then(function(response){
               if(stampa){

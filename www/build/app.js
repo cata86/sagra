@@ -127,7 +127,7 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
                 pietanzeOrdinate: null,
                 numSequenza: null,
                 sequenze: null,
-                ospiti: false
+                ospiti: null
             },
             cache: false,
             views: {

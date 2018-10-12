@@ -16,7 +16,7 @@
         numSequenzaSelezionato: $stateParams.numSequenza ? $stateParams.numSequenza : 1,
         sequenze: $stateParams.sequenze ? $stateParams.sequenze : [1],
         ordineInInvio: false,
-        ospiti: false
+        ospiti: $stateParams.ospiti ? $stateParams.ospiti : false,
       };
 
       $scope.categoriePietanzeOrdinate = [];

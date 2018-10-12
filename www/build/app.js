@@ -126,7 +126,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
                 tavolo: null,
                 pietanzeOrdinate: null,
                 numSequenza: null,
-                sequenze: null
+                sequenze: null,
+                ospiti: false
             },
             cache: false,
             views: {
@@ -168,7 +169,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
           params: {
             tavolo: null,
             pietanzeOrdinate: null,
-            nomeAsporto: null
+            nomeAsporto: null,
+            ospiti: false
           },
           cache: false,
           views: {
@@ -314,7 +316,8 @@ angular.module('App', ['ionic', 'ngCordova', 'ngAnimate','ngLodash', 'tabSlideBo
                 ordine: null,
                 pietanzeOrdinate: null,
                 numSequenza: null,
-                sequenze: null
+                sequenze: null,
+                ospiti: false
             },
             cache: false,
             views: {

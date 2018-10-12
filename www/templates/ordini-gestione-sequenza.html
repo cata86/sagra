@@ -5,9 +5,6 @@
             <span>
               <!--<i class="icon ion-android-delete" ng-click="rimuoviSequenza({{seq}})" style="font-size:2em; vertical-align:middle; cursor: pointer"></i>  SEQ. {{seq}}-->
             </span>
-            <div class="item item-button-right" style="border-style: solid">
-                <ion-checkbox ng-model="data.ospiti" ng-checked="data.ospiti">Ospiti</ion-checkbox>
-            </div>
             <button class="button icon-left ion-plus-circled button-positive button-aggiungi"
             ng-click="modificaPietanzeSequenza({{seq}})">Menù</button>
           </div>
@@ -32,6 +29,12 @@
             </span>
         </div>
         <div class="row">
+            <div class="col text-right">
+              <ion-checkbox style="padding: 0px; height: 30px; width: 100px; font-size: 14px; float: right; border: none" ng-model="data.ospiti" ng-checked="data.ospiti">Ospiti</ion-checkbox>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 10px;">
           <div class="col text-right">
             <button ng-show="visualizzaInviaSposta()" ng-disabled="data.ordineInInvio" class="button icon-left ion-paper-airplane button-assertive"
               ng-click="inviaOrdine(false)">Invia e sposta

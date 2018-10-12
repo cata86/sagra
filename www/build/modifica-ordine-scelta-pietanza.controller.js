@@ -86,7 +86,8 @@
         ordine: $scope.data.ordine,
         pietanzeOrdinate: pietanzeOrdinate,
         numSequenzaSelezionato : $scope.data.numSequenzaSelezionato,
-        sequenze : $scope.data.sequenze
+        sequenze : $scope.data.sequenze,
+        ospiti: $scope.data.ospiti
       },
       {reload: true});
     };

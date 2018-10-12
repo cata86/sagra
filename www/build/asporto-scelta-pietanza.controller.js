@@ -78,7 +78,8 @@
         tavoloReale: $scope.data.tavoloReale,
         tavolo: $scope.data.tavolo,
         pietanzeOrdinate: pietanzeOrdinate,
-        nomeAsporto: $scope.data.nomeAsporto
+        nomeAsporto: $scope.data.nomeAsporto,
+        ospiti: $scope.data.ospiti
       },
       {reload: true});
     };

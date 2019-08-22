@@ -20,7 +20,7 @@
 
 
 ******************* NUOVA SAGRA *********************
-1. modificare nome sagra cablato nel menu.html e home.html
+1. modificare nome sagra cablato nel templates/menu.html e home.html
 2. modificare icona sagra
 - mettere icona con nome icon.png nella cartella resources
 - ionic resources --icon -> Generate only the icons. `icon.png`, `icon.psd` or `icon.ai` is located in `./resources/` directory

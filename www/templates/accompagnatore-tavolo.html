@@ -1,9 +1,11 @@
 <ion-view class="itemView" view-title="{{tavoloRealeSelezionato.descrizione}}" >
   <ion-content>
-
     <div class="item item-divider align-button-center">
-      <button class="button button-positive" ng-click="apriTavoloAccomodato()">Accomoda nuovo tavolo</button>
+      <button class="button button-positive" ng-click="apriTavoloAccomodato(false)">Accomoda tavolo</button>
+      <button class="button button-assertive" style="margin-left: 20px;" ng-click="apriTavoloAccomodato(true)">Accomoda tavolo ospiti</button>
+
     </div>
+
     <ion-list can-swipe="true" class="list-sagra">
 
       <a class="item item-icon-left item-button-right"  ng-click="" ng-repeat="tavoloAccomodato in tavoliAccomodatiByTavoloId">
@@ -11,6 +13,9 @@
         {{tavoloAccomodato.descrizione}}
         <span style="padding-left: 20px" class="orarioAccomodato">
           {{tavoloAccomodato.accomodatoOrario | date : 'HH:mm'}}
+        </span>
+        <span style="padding-left: 20px" class="orarioAccomodato" ng-if="tavoloAccomodato.ospiti">
+          (OSPITI)
         </span>
         <button class="button button-assertive" ng-click="chiudiTavoloAccomodato(tavoloAccomodato)">Chiudi</button>
       </a>

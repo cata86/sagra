@@ -74,7 +74,8 @@
                   config.operatore,
                   $scope.data.tavoloReale.asporto,
                   0,
-                  $scope.data.nomeAsporto
+                  $scope.data.nomeAsporto,
+                  false
                 ).then(function(response){
                     $scope.data.tavolo = response.data;
                     Ordinatore.creaOrdine(

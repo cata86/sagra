@@ -21,7 +21,8 @@
             <i class="icon ion-record" ng-style="{{getColoreStatoTavolo(tavolo.stato)}}" title="{{tavolo.stato}}"></i>
             <div class="row ">
               <div class="col">
-                <span>{{tavolo.descrizione}}</span>
+                <span>{{tavolo.descrizione}} </span>
+                <span ng-show="tavolo.ospiti"> (OSPITI)</span>
               </div>
               <div class="col">
                 <span class="orarioAccomodato">{{tavolo.accomodatoOrario | date : 'HH:mm'}}</span>

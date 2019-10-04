@@ -38,15 +38,17 @@
       return tavoloAccomodato[campoOrario];
     }
 
-    $scope.apriTavoloAccomodato = function(){
+    $scope.apriTavoloAccomodato = function(ospiti){
       Accompagnatore.apriTavoloAccomodato(
         $scope.tavoloRealeSelezionato.id,
         config.operatore,
         $scope.tavoloRealeSelezionato.asporto,
-        0
+        0, 
+        undefined,
+        ospiti
       ).then(function(response){
         var confirmPopup = $ionicPopup.alert({
-          title: 'Tavolo accomodato',
+          title: response.data.ospiti ? 'Tavolo OSPITI accomodato' : 'Tavolo accomodato',
           template: response.data.descrizione
         });
         confirmPopup.then(function(res) {

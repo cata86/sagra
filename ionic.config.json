@@ -1,6 +1,7 @@
 {
   "name": "App",
-  "app_id": "22a68333",
+  "integrations": {},
+  "type": "ionic1",
   "watch": {
     "watch": "app/**/*",
     "livereload": [
@@ -8,8 +9,11 @@
       "!www/lib/**/*"
     ]
   },
-  "type": "ionic1",
   "watchPatterns": [
-    "scss/**/*"
-  ]
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "id": "22a68333"
 }

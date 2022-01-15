@@ -27,7 +27,7 @@
         "merge2": "^1.0.2",
         "preen": "^1.2.0",
         "pump": "^1.0.1",
-        "shelljs": "^0.3.0"
+        "shelljs": "^0.8.5"
     },
     "cordovaPlugins": [
         "cordova-plugin-device",
